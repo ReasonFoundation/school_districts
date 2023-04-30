@@ -1,0 +1,195 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+```{r}
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(tidyr)
+library(janitor)
+library(plotly)
+options(scipen = 999)
+```
+
+## Hgarb collected
+
+This file has NCES ID and entity name
+
+```{r}
+# HGarb team emailed, Hgarb added a couple thousand on Thuy's matched list. 
+sd2020_namematched_Hgarb <- rio::import("data/_K12 School District 12_01_22 - Consolidated.csv") %>% 
+  select(-c(Comments, `Employer name in GASB 68/ACFR`, `V13`)) %>% 
+  rename(ncesID = `NCES ID`) %>% 
+  mutate(ncesID = as.character(ncesID)) %>% 
+  
+    # removing a total line at bottom
+  filter(`School District (Portal Name)` != "Totals") %>% 
+  
+  # removing "," in numbers
+    mutate(`Net Pension Liability` = str_replace_all(`Net Pension Liability`, ",", "")) %>% 
+    mutate(`Net Pension Liability` = as.double(`Net Pension Liability`)) %>% 
+  
+  mutate(`Net Pension Asset` = str_replace_all(`Net Pension Asset`, ",", ""), 
+         `Overall Liability (Asset) Associated with District Staff` = str_replace_all(`Overall Liability (Asset) Associated with District Staff`, ",", "")) %>% 
+  
+  # converting char to number
+    mutate(`Net Pension Asset` = as.double(`Net Pension Asset`), 
+           `Overall Liability (Asset) Associated with District Staff` = as.double(`Overall Liability (Asset) Associated with District Staff`)) %>% 
+
+
+ # for sd collected ID that has only 6 digits, adding a leading 0
+  mutate(ncesID = ifelse(str_length(ncesID) < 7, paste0("0", ncesID), ncesID)) %>% 
+
+# special cases 
+ mutate(ncesID = ifelse(ncesID == "4833090", "4833120", ncesID)) # Hgarb attributed wrong NCES ID to this entity --> its nces ID should be 4833120
+
+```
+
+## School districts in Acfrs 2020
+
+This file has acfrs id and entity name.
+
+Join the file collected by Hgarb and Acfrs database file by common col: entity name
+
+Result: a dictionary of name - nces id (from Hgrab collected file) - acfrs id (from database).
+The dictionary has 10719 school districts. Of which, 2668 does not have acfrs id. 
+
+```{r}
+# data queried April 3, 2023
+sd2020_db <- readRDS("data/data_from_dbsite_2020.RDS") %>% 
+  filter(category == "School District") 
+
+# match Hgarb list to db list 2020
+sd_2020_combined <- sd2020_namematched_Hgarb %>% 
+  rename(name = `School District (Portal Name)`,
+         state = State) %>% 
+  left_join(sd2020_db) %>% 
+  filter(!is.na(ncesID))
+
+# dictionary ncesID, name, id (internal Acfrs database id)
+dictionary <- sd_2020_combined %>% select(ncesID, name, id, state) %>% 
+
+# manually adding acfrs id to some big SD by str_detect names in acfrs and copy id
+  mutate(id = case_when(ncesID == "2400510" ~ "196828",
+                        ncesID == "0803360" ~ "189042",
+                        ncesID == "5103840" ~ "197671",
+                        ncesID == "1500030" ~ "71050", # Hawaii Department of Education
+                        TRUE ~ as.character(id)
+                        ))
+
+saveRDS(dictionary, "dictionary.RDS")
+
+# more than 2000 does not have id --> need to use name to get id
+# what are names w/o id:
+without_id <- dictionary %>% filter(is.na(id))
+
+#eg Alamosa School District Re-11J
+# Bennington Independent School District No. I-40
+
+# if we can get acfrs for all 10719 sd, how many students would be? 4,124,968
+setdiff(nces$ncesID, dictionary$ncesID) -> ncesID_leftover
+nces %>% filter(ncesID %in% ncesID_leftover) %>% mutate(tot = sum(students)) %>% select(tot) %>% slice(1)
+#--> 4,124,968 students unaccounted for. 
+
+# If left out school districts with less than 2000 students, how many left out in total? 1,141,638 students = 2 % 
+# nces %>% 
+ # mutate(tot = sum(students)) %>% select(tot) %>% slice(1)
+# --> total 48,420,226 nationwide--> acceptable
+
+nces %>% filter(ncesID %in% ncesID_leftover) %>% filter(students > 2000) %>% 
+  mutate(tot = sum(students)) %>% arrange(desc(students)) %>% 
+  filter(!nces_original_name %in% c("Portland SD 1J", "Davidson County")) %>% 
+  filter(!str_detect(nces_original_name, "NEW YORK CITY")) %>% 
+  
+  # need to collect this
+  arrange(state, nces_original_name) -> ncesleftover_list #307 left, need to find in acfrs these
+  
+write.csv("ncesID_need_acfrs_id.csv")
+# this has ncesID --> check if collected in acfrs yet? 
+
+ncesleftover_list %>% 
+filter(ncesID == "1602100")
+```
+
+
+```{r}
+sd2020_db %>% filter(category == "School District") %>% 
+  filter(nces_district_id %in% ncesleftover_list$ncesID) -> leftoverlist_already_in_acfrs # 69 sd already included in acfrs
+  
+
+# now take those already in acfrs out of leftover list 307 - 69 = 238 sd --> need to manually collect
+ncesleftover_list %>% 
+  filter(!ncesID %in% leftoverlist_already_in_acfrs$nces_district_id) %>% arrange(desc(students))%>% select(-tot) %>% 
+  
+  # can get DE manually from state ACFRS
+  filter(state != "DE") %>% # mutate(tot_DE = sum(students)) 119738
+  
+  #mutate(sum_222sd = sum(students))
+write.csv("sd_more_2000students_need_acfrs.csv")
+#   mutate(tot_69sd = sum(students)) accounted for extra 487245 students --> 
+  
+# Now have 222 sd = 1,296,559
+```
+
+```{r}
+sd2020_db %>% select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
+  mutate(tot_li = sum(total_liabilities),
+         tot_pen = sum(net_pension_liability),
+         tot_opeb = sum(net_opeb_liability),
+         tot_rev = sum(revenues)) %>% slice(1) %>% select(id, tot_li, tot_pen, tot_opeb, tot_rev, year) -> tot20
+```
+
+```{r}
+sd2021_db %>% select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
+  mutate(tot_li = sum(total_liabilities),
+         tot_pen = sum(net_pension_liability),
+         tot_opeb = sum(net_opeb_liability),
+         tot_rev = sum(revenues)) %>% slice(1) %>% select(id, tot_li, tot_pen, tot_opeb, tot_rev, year) -> tot21
+
+tot20 %>% rbind(tot21)
+
+```
+
+```{r}
+top100_result %>% 
+ # "NEW YORK CITY GEOGRAPHIC DISTRICT"
+  filter(nces_original_name %in% c("Davidson County", "Portland SD 1J", "Boston", "CHESTERFIELD CO PBLC SCHS", "HENRICO CO PBLC SCHS", "FAIRFAX CO PBLC SCHS", "LOUDOUN CO PBLC SCHS", "PRINCE WILLIAM CO PBLC SCHS", "VA BEACH CITY PBLC SCHS")) %>% 
+  select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
+  mutate(tot_li = sum(total_liabilities),
+         tot_pen = sum(net_pension_liability),
+         tot_opeb = sum(net_opeb_liability),
+         tot_rev = sum(revenues, na.rm = T)) %>% slice(1) %>% select(id, tot_li, tot_pen, tot_opeb, tot_rev, year) -> tot_othersd
+
+
+top100_result %>% 
+  filter(str_detect(nces_original_name, "(i?)NEW YORK CITY GEOGRAPHIC DISTRICT"))
+ # "NEW YORK CITY GEOGRAPHIC DISTRICT"
+
+nyc_20_21 %>% select(7:13) %>% distinct() %>% select(-c(doe_expenses, doe_total_asset)) %>% 
+  rename(tot_li = doe_total_liabilities,
+         tot_pen = doe_net_pension,
+         tot_opeb = doe_net_opeb,
+         tot_rev = doe_revenues) %>% mutate(id = NA) -> tot_ny32sd
+  
+
+tot20 %>% rbind(tot21) %>% 
+  rbind(tot_ny32sd) %>% group_by(year) %>% 
+  mutate(tot_sd_liability = sum(tot_li),
+         tot_sd_pension = sum(tot_pen),
+         tot_sd_opeb = sum(tot_opeb),
+         tot_sd_rev = sum(tot_rev)
+         
+         ) %>% select(6:10) %>% 
+  distinct()
+
+```
+
+
+Mismatch of id and nces_district_id: 
+Note on: Central Unified School District id 146007 (database how id = 376212)
+
+Del Norte County Unified nces 610770 should not be Dehesa School District, attached 43069 in database
+
