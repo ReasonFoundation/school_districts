@@ -38,13 +38,9 @@ nces <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>%
 mutate(students = as.numeric(students)) 
 ```
 
-## Top SD in NCES
-
-- Excluding 5 US territories: "AS", "DC", "GU", "PR", "VI"
-- Take 105 top sd in NCES list because could not find acfrs for 4 of the first 100 
+## Top School Districts in NCES
 
 ```{r echo = FALSE}
-# 100 sd in NCES
 top_sd_nces <- nces %>% 
   arrange(desc(students)) %>% slice(1:105) %>% arrange(nces_original_name) # must take more than 100 because could not find acfrs for 4 of the first 100 
 datatable(top_sd_nces)
@@ -52,9 +48,8 @@ datatable(top_sd_nces)
 
 # School districts from Acfrs database 2020, 2021
 
-
 ```{r echo = FALSE}
-db2020 <- readRDS("data/data_from_dbsite_2020.RDS") # Data queried Feb 21
+db2020 <- readRDS("data/data_from_dbsite_2020.RDS") # Data queried April 25, 2023
 db2021 <- readRDS("data/data_from_dbsite_2021.RDS")
 
 sd2020_db <- readRDS("data/data_from_dbsite_2020.RDS") %>% 
@@ -69,15 +64,17 @@ sd2021_db <- readRDS("data/data_from_dbsite_2021.RDS") %>%
 
 ```
 
-- Data queried from database on Feb 21, 2023. 
+- Data queried from database on April 25, 2023. 
 - There are `r nrow(db2020)` acfrs collected in 2020 and `r nrow(db2021)` in 2021. Of which, the numbers of school districts acfrs are `r nrow(sd2020_db)` and `r nrow(sd2021_db)` for 2020 and 2021, respectively.
 
-## Top SD in ACFRs
+## Top School Districts in ACFRs
 
 Found 93 acfrs that are in the top 100 largest of NCES.
 
 ```{r echo = FALSE}
+# Dictionary created in this project, file "dictionary_name_ncesID_acfrsID.qmd"
 dictionary <- readRDS("dictionary.RDS")
+
 # get acfrsID into this top nces, using dictionary 
 top_sd_acfrs <- top_sd_nces %>% left_join(dictionary) %>% drop_na(id) # drop those do not have acfrs id, not found in Acfrs database. They're picked up by HGarb team outside database
 
@@ -299,6 +296,7 @@ mutate(
 
 
 ```
+
 ## Henrico
 Henrico County schools are a component unit of Henrico County: Henrico-County-VA-FY21-ACFR-Final.pdf. page 25 - 26
 ```{r}
@@ -435,11 +433,10 @@ mutate(
   net_opeb_liability = 387461319, #p 21,  
   net_pension_liability = 4115292996, #p 21
   expenses = 3320812299, #p22 Statement of activities
-  revenues = 76892323 + 411859293 + 194679133 + 2718687903) %>% #p 22, 
+  revenues = 76892323 + 411859293 + 194679133 + 2718687903) %>% #p22, 
   # 
   select(ncesID, nces_original_name, county_name, city, state, id, students, year, total_liabilities, net_opeb_liability, net_pension_liability, expenses, revenues)
 
-76892323 + 411859293 + 194679133 + 2718687903
 ```
 ## VA Loudoun 2021
 ```{r}
@@ -476,6 +473,7 @@ mutate(
   # 
   select(ncesID, nces_original_name, county_name, city, state, id, students, year, total_liabilities, net_opeb_liability, net_pension_liability, expenses, revenues)
 ```
+
 ## VA BEACH CITY PBLC SCHS 2021
 
 ```{r}
@@ -537,11 +535,11 @@ top100_result <- sd_100_2020 %>%
         arrange(desc(students)) %>% 
   
   # FIX BROWARD - wrong entry
-  mutate(total_liabilities = ifelse(nces_original_name == "BROWARD" & year == 2021, total_liabilities*1000, total_liabilities),
-         net_pension_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_pension_liability*1000, net_pension_liability),
-         net_opeb_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_opeb_liability*1000, net_opeb_liability), 
-         expenses = ifelse(nces_original_name == "BROWARD" & year == 2021, expenses*1000, expenses), 
-         revenues = ifelse(nces_original_name == "BROWARD" & year == 2021, revenues*1000, revenues)) %>% 
+  # mutate(total_liabilities = ifelse(nces_original_name == "BROWARD" & year == 2021, total_liabilities*1000, total_liabilities),
+  #        net_pension_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_pension_liability*1000, net_pension_liability),
+  #        net_opeb_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_opeb_liability*1000, net_opeb_liability), 
+  #        expenses = ifelse(nces_original_name == "BROWARD" & year == 2021, expenses*1000, expenses), 
+  #        revenues = ifelse(nces_original_name == "BROWARD" & year == 2021, revenues*1000, revenues)) %>% 
   
   # per student
   
@@ -565,7 +563,7 @@ top100_result <- sd_100_2020 %>%
 # Result: 103 sd districts for 2 years, except Clayton has 
 datatable(top100_result)
 
-top100_result %>% write.csv("top100_result_March29_2023.csv")
+top100_result %>% write.csv("top100_result_April30_2023.csv")
 ```
 
 
