@@ -535,11 +535,11 @@ top100_result <- sd_100_2020 %>%
         arrange(desc(students)) %>% 
   
   # FIX BROWARD - wrong entry
-  # mutate(total_liabilities = ifelse(nces_original_name == "BROWARD" & year == 2021, total_liabilities*1000, total_liabilities),
-  #        net_pension_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_pension_liability*1000, net_pension_liability),
-  #        net_opeb_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_opeb_liability*1000, net_opeb_liability), 
-  #        expenses = ifelse(nces_original_name == "BROWARD" & year == 2021, expenses*1000, expenses), 
-  #        revenues = ifelse(nces_original_name == "BROWARD" & year == 2021, revenues*1000, revenues)) %>% 
+  mutate(total_liabilities = ifelse(nces_original_name == "BROWARD" & year == 2021, total_liabilities*1000, total_liabilities),
+         net_pension_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_pension_liability*1000, net_pension_liability),
+         net_opeb_liability = ifelse(nces_original_name == "BROWARD" & year == 2021, net_opeb_liability*1000, net_opeb_liability),
+         expenses = ifelse(nces_original_name == "BROWARD" & year == 2021, expenses*1000, expenses),
+         revenues = ifelse(nces_original_name == "BROWARD" & year == 2021, revenues*1000, revenues)) %>%
   
   # per student
   

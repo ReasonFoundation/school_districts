@@ -58,7 +58,7 @@ Result: a dictionary of name - nces id (from Hgrab collected file) - acfrs id (f
 The dictionary has 10719 school districts. Of which, 2668 does not have acfrs id. 
 
 ```{r}
-# data queried April 3, 2023
+# data queried April 30, 2023
 sd2020_db <- readRDS("data/data_from_dbsite_2020.RDS") %>% 
   filter(category == "School District") 
 

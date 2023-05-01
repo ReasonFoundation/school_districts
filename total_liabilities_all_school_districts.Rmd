@@ -1,0 +1,67 @@
+---
+title: "Untitled"
+output: html_document
+date: "2023-05-01"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+**NOTE**: Excluding District of Columbia, all Delaware school districts, and other 238 school districts that are being collected by Hgarb. 
+
+## Total Liabilities in the current database
+```{r}
+sd2020_db %>% select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
+  mutate(tot_li = sum(total_liabilities),
+         tot_pen = sum(net_pension_liability),
+         tot_opeb = sum(net_opeb_liability),
+         tot_rev = sum(revenues)) %>% slice(1) %>% select(id, tot_li, tot_pen, tot_opeb, tot_rev, year) -> tot20
+```
+
+```{r}
+sd2021_db %>% select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
+  mutate(tot_li = sum(total_liabilities),
+         tot_pen = sum(net_pension_liability),
+         tot_opeb = sum(net_opeb_liability),
+         tot_rev = sum(revenues)) %>% slice(1) %>% select(id, tot_li, tot_pen, tot_opeb, tot_rev, year) -> tot21
+
+tot20 %>% rbind(tot21)
+
+```
+## Adding SD manually collected
+```{r}
+
+# Previously apportioned for all 32 NYC school districts
+nyc_20_21 %>% select(7:13) %>% distinct() %>% select(-c(doe_expenses, doe_total_asset)) %>% 
+  rename(tot_li = doe_total_liabilities,
+         tot_pen = doe_net_pension,
+         tot_opeb = doe_net_opeb,
+         tot_rev = doe_revenues) %>% mutate(id = NA) -> tot_ny32sd
+
+# Adding other sd that are collected manually in file top100sd.Rmd
+top100_result %>% 
+  filter(nces_original_name %in% c("Davidson County", "Portland SD 1J", "Boston", "CHESTERFIELD CO PBLC SCHS", "HENRICO CO PBLC SCHS", "FAIRFAX CO PBLC SCHS", "LOUDOUN CO PBLC SCHS", "PRINCE WILLIAM CO PBLC SCHS", "VA BEACH CITY PBLC SCHS")) %>% 
+  select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
+  mutate(tot_li = sum(total_liabilities),
+         tot_pen = sum(net_pension_liability),
+         tot_opeb = sum(net_opeb_liability),
+         tot_rev = sum(revenues, na.rm = T)) %>% slice(1) %>% select(id, tot_li, tot_pen, tot_opeb, tot_rev, year) -> tot_othersd
+
+
+tot20 %>% rbind(tot21) %>% 
+  # 32 NYC 
+  rbind(tot_ny32sd) %>% 
+  
+  # others
+  rbind(tot_othersd) %>% 
+  
+  group_by(year) %>% 
+  mutate(all_sd_liabilities = sum(tot_li),
+         all_sd_pension = sum(tot_pen),
+         all_sd_opeb = sum(tot_opeb),
+         all_sd_rev = sum(tot_rev)
+         
+         ) %>% select(6:10) %>% 
+  distinct() %>% mutate_each(funs(prettyNum(., big.mark=",")))
+```
+
