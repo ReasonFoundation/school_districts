@@ -13,7 +13,6 @@ options(scipen = 999)
 ```
 **NOTE**: Excluding District of Columbia, all Delaware school districts, and other 238 school districts that are being collected by Hgarb. 
 
-
 ## Total Liabilities of SD in the current database
 ```{r}
 readRDS("data/data_from_dbsite_2020.RDS") %>% 
