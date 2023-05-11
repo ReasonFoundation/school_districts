@@ -134,6 +134,7 @@ write.csv("sd_more_2000students_need_acfrs.csv")
 # Now have 222 sd = 1,296,559
 ```
 
+
 ```{r}
 sd2020_db %>% select(id, total_liabilities, net_pension_liability, net_opeb_liability, revenues, year) %>% 
   mutate(tot_li = sum(total_liabilities),

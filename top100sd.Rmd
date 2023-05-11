@@ -119,7 +119,9 @@ nyc_2021 <- nces %>% filter(str_detect(nces_original_name, "(?i)NEW YORK CITY GE
          doe_revenues = 28976372000) #page 26
 
 nyc_20_21 <- rbind(nyc_2020, nyc_2021)
-  
+saveRDS(nyc_20_21, "nyc_20_21.RDS")  
+
+
   nyc_20_21 %>% 
     # students share
   mutate(
@@ -139,6 +141,15 @@ nyc_20_21 <- rbind(nyc_2020, nyc_2021)
 filter(ncesID %in% top_sd_acfrs_10$ncesID) -> nyc_20_21_5sd
 
 ```
+
+
+```{r}
+nyc_20_21 %>% filter(state)
+  mutate(rev_per_student = doe_revenues/sum(students))
+```
+
+
+
 
 ## Boston
 
@@ -563,6 +574,7 @@ top100_result <- sd_100_2020 %>%
 # Result: 103 sd districts for 2 years, except Clayton has 
 datatable(top100_result)
 
+saveRDS(top100_result, "top100_result.RDS")
 top100_result %>% write.csv("top100_result_April30_2023.csv")
 ```
 
