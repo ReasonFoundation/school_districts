@@ -18,7 +18,6 @@ library(plotly)
 # Entity Category
 
 ```{r}
-
 db_2020 <- readRDS("data/data_from_dbsite.RDS")
 
 db_2020 %>% 

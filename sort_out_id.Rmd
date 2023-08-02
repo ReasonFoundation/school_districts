@@ -121,7 +121,6 @@ missing_nces_morethan_1000 %>% mutate(tot = sum(students))
 # total already have both ncesID and acfrs id: 40192764 students
 nces %>% left_join(dic_withid, by = "ncesID") %>% drop_na(id) %>% mutate(tot = sum(students)) 
 
-
 # what sd 2020 left with out nces ID? 
 sd2020_db %>% left_join(dic_withid) %>% filter(is.na(ncesID)) -> need_nces_2020
 
@@ -142,8 +141,5 @@ need_nces_2021 %>% rbind(id2020_not_in_2021) %>% write.csv("sd_in_acfrs_need_nce
 
 ```
 
-```{r}
-# test any one of this already has ncesID?
-dictionary %>% filter(id == "94017")
-```
+
 

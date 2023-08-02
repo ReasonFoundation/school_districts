@@ -1,0 +1,953 @@
+"","state","name","id"
+"1","AK","Saint Mary's School District",64746
+"2","AR","Arkansas River Educational Service Cooperative",188464
+"3","AR","Boston Mountain Educational Cooperative",44870
+"4","AR","Cross County School District No. 7",98665
+"5","AR","Crowley's Ridge Education Service Cooperative",30759
+"6","AR","Dawson Educational Cooperative",56143
+"7","AR","Dequeen-Mena Educational Service Cooperative",30778
+"8","AR","Great Rivers Educational Service Cooperative",98693
+"9","AR","Guy Fenter Education Service Cooperative",30709
+"10","AR","Hoxie School District No. 46",1027272
+"11","AR","Kipp Delta Public Schools",50412
+"12","AR","Mulberry School District No. 101",145849
+"13","AR","Northcentral Arkansas Education Service Cooperative",101680
+"14","AR","Northeast Arkansas Educational Cooperative",101681
+"15","AR","Northwest Arkansas Education Service Cooperative",43818
+"16","AR","Ozarks Unlimited Resources Educational Cooperative",229576
+"17","AR","Parkers Chapel School District No. 35",98768
+"18","AR","Searcy Special School District",108526
+"19","AR","South Central Service Cooperative",101689
+"20","AR","South Side School District No. 2",145861
+"21","AR","Southwest Arkansas Educational Cooperative",188490
+"22","AR","Special Procedures on Selected School Districts",108527
+"23","AR","West Side School District No. 4",145868
+"24","AR","Wilbur D. Mills Education Service Cooperative",188500
+"25","AZ","Chilchinbeto Community School Inc",45860
+"26","AZ","Pima County Joint Technical Education District No. 11",223740
+"27","AZ","St. Johns Unified School District No. 1",30515
+"28","CA","Alpine County Office of Education",67002
+"29","CA","Amethod Public Schools",171010
+"30","CA","Community Collaborative Virtual School",169346
+"31","CA","Contra Costa County Special Education Local Plan Area",45569
+"32","CA","East San Gabriel Valley Regional Occupational Program",31259
+"33","CA","Elkins Elementary School District",146108
+"34","CA","Fresno County Superintendent of Schools",67306
+"35","CA","Greater Anaheim Special Education Local Plan Area",47326
+"36","CA","Hope Elementary School District",146216
+"37","CA","Hospitality Industry Training and Education Fund",188694
+"38","CA","Inyo County Office of Education",93657
+"39","CA","Island Union Elementary School District",146232
+"40","CA","Kings River-Hardwick Union School District",98877
+"41","CA","Point Arena Schools District",167205
+"42","CA","South Bay Union Elementary School District",146666
+"43","CA","Two Rock Union School District",146729
+"44","CA","Vista Charter Public Schools Inc.",169748
+"45","CA","Washington Unified School District (Yolo County)",146760
+"46","CO","Arapahoe County School District No. 1",32037
+"47","CO","Arapahoe County School District No. 6",41980
+"48","CO","Colorado River Board of Cooperative Educational Services",59201
+"49","CO","Conejos School District No. 6j",223911
+"50","CO","East Central Board of Cooperative Educational Services",32066
+"51","CO","El Paso County School District #22",50906
+"52","CO","El Paso County School District No. 14",223917
+"53","CO","El Paso County School District No. 38",50907
+"54","CO","El Paso County School District No. 8",32049
+"55","CO","Joint School District No. 28-J of the Counties of Adams and Arapahoe",32038
+"56","CO","Northeast Colorado Board of Cooperative Educational Services",32075
+"57","CO","Northwest Colorado Board of Cooperative Educational Services",41619
+"58","CO","Pagosa Peak Open School",171026
+"59","CO","Pikes Peak Board of Cooperative Educational Services",46642
+"60","CO","Salida School District No. R-32-J",32041
+"61","CO","San Juan Board of Cooperative Educational Services",32062
+"62","CO","San Luis Valley Boces",32035
+"63","CO","Santa Fe Trail Boces",46575
+"64","CO","South Central BOCES",32080
+"65","CO","Southeastern BOCES",93774
+"66","CO","Weld County School District No. 6",32085
+"67","CO","Weld County School District Re-8",40218
+"68","CT","Capitol Regional Education Council",32208
+"69","CT","Eastern Connecticut Regional Educational Service Center",68203
+"70","CT","Pomperaug Regional School District No. 15",32209
+"71","CT","Regional School District No. 11",155925
+"72","CT","Regional School District No. 14",98974
+"73","CT","Regional Supervision District Board of Education",68357
+"74","CT","Shepaug Regional School District 12",98978
+"75","DE","Tarbiyah School",398306
+"76","FL","Andrews High School",68492
+"77","FL","Aventura City of Excellence School",68544
+"78","FL","Biscayne High School",68624
+"79","FL","Byrneville Elementary School",68709
+"80","FL","C.G. Bethel High School",103106
+"81","FL","Chambers High School",68768
+"82","FL","Creative Inspiration Journey of St. Cloud",399040
+"83","FL","Don Soffer Aventura High School",399046
+"84","FL","Dr. Kiran C. Patel High School",399051
+"85","FL","Flora Ridge Educational Facilities Benefit District",1063388
+"86","FL","Lake Wales Senior High School",399128
+"87","FL","Lone Star High School",69573
+"88","FL","Mcintosh Area School",69672
+"89","FL","Micanopy Area Cooperative School",69708
+"90","FL","Nature Coast Middle School",69750
+"91","FL","New Beginnings High School",69754
+"92","FL","New Springs Elementary School",399164
+"93","FL","Palm Pointe Educational Research School at Tradition",69899
+"94","FL","Pensacola Beach Elementary School",69946
+"95","FL","Polk Avenue Elementary School",70017
+"96","FL","Suncoast School for Innovative Studies",70393
+"97","FL","Suned High of South Broward",399262
+"98","FL","Sunrise High School",105055
+"99","FL","Sunshine High School Greater Orlando Campus",399264
+"100","FL","Terrace Community Middle School",70440
+"101","FL","The Einstein School",70451
+"102","FL","The Florida School for the Deaf and the Blind",157127
+"103","FL","The Seaside School, Inc.",70468
+"104","GA","Buford City Schools",99008
+"105","GA","Central Savannah River Area RESA",189191
+"106","GA","Chattahoochee Flint RESA",189193
+"107","GA","Coastal Plains RESA",189196
+"108","GA","First District RESA",189208
+"109","GA","Griffin RESA",189214
+"110","GA","Heart of Georgia RESA",189218
+"111","GA","Middle Georgia RESA",189228
+"112","GA","North Georgia Regional Educational Service Agency",189235
+"113","GA","Northwest Georgia Regional Educational Service Agency",189236
+"114","GA","Oconee RESA",189237
+"115","GA","Okefenokee RESA",189239
+"116","GA","Pioneer RESA",189242
+"117","GA","Southwest Georgia RESA",189250
+"118","GA","The Metropolitan RESA",189227
+"119","GA","West Georgia RESA",189263
+"120","IA","Central Rivers Area Education Agency 267",50262
+"121","IA","Grant Wood Area Education Agency 10",33361
+"122","IA","Great Prairie Area Education Agency",52626
+"123","IA","Green Hills Aea",33420
+"124","IA","Iowa Education Benefits Program",163018
+"125","IA","Iowa Star School 28e Retention Pool Trust",169574
+"126","IA","Keystone Area Education Agency 1",33371
+"127","IA","Mississippi Bend Area Education Agency 9",163090
+"128","IA","Prairie Lakes Area Education Agency",165780
+"129","IA","Treasurer of State Iowa Educational Savings Plan Trust",163249
+"130","ID","Homedale Joint School District No. 370",32740
+"131","ID","Joint School District No. 21",32701
+"132","ID","Joint School District No.2",32700
+"133","IL","B-M-P Tri-County Special Education Cooperative",47478
+"134","IL","Burr Ridge Community Consolidated School District 180",51824
+"135","IL","Capital Area Career Center",45120
+"136","IL","Career Center of Southern Illinois",42411
+"137","IL","Community Consolidated School District 15",32944
+"138","IL","Community Consolidated School District 181",53271
+"139","IL","Community Consolidated School District No. 65",44008
+"140","IL","Community Unit School District 100",42064
+"141","IL","Community Unit School District No. 140",65415
+"142","IL","Cook County School District 130",32902
+"143","IL","Cook County School District 151",32952
+"144","IL","Cooperative Association for Special Education",47194
+"145","IL","East St. Louis Area Joint Agreement",33122
+"146","IL","Echo Joint Agreement",32962
+"147","IL","La Grange School District 105 South",1238171
+"148","IL","LaGrange School District No. 102",32929
+"149","IL","Legacy Law School Corporation",169869
+"150","IL","Leyden Area Special Education",169390
+"151","IL","Nokomis Community Unit School District #22",189380
+"152","IL","North Clay Community Unit School District #25",189381
+"153","IL","Skokie/Morton Grove School District No. 69",46301
+"154","IL","Southern Will County Cooperative for Special Education",33161
+"155","IL","Special Education District of Mchenry County",41935
+"156","IN","Admas Central Community Schools - Ecas",196595
+"157","IN","Alexandria Community School Corporation - Ecas",197188
+"158","IN","Argos Community Schools",203683
+"159","IN","Argos Community Schools - Eca",197190
+"160","IN","Attica Consolidate School Corporation - Ecas",197194
+"161","IN","Attica Consolidated School Corporation",203684
+"162","IN","Avon Community School Corporation - Ecas",199948
+"163","IN","Barr-Reeve Community Schools Inc",43700
+"164","IN","Bartholomew Consol School Corporation - Eca",196599
+"165","IN","Baugo Community Schools - Ecas",197195
+"166","IN","Bloomfield School District",199949
+"167","IN","Bloomfield School District - Ecas",189420
+"168","IN","Bluffton-Harrison Metropolitan School District",43269
+"169","IN","Bremen Public Schools - Ecas",197197
+"170","IN","Brownsburg Community School Corporation - Ecas",199953
+"171","IN","Brownstown Central Comm School Corporation-Ecas",197198
+"172","IN","Cannelton City Schools",401517
+"173","IN","Carroll Consolidated School Corporation - Ecas",189441
+"174","IN","Caston School Corporation",199955
+"175","IN","Caston School Corporation - Ecas",189443
+"176","IN","Centerville-Abington Com School Corporation",207299
+"177","IN","Clark-Pleasant Comm School Corporation - Ecas",203843
+"178","IN","Clarksville Community School Corporation - Ecas",189449
+"179","IN","Clay Community Schools - Ecas",189450
+"180","IN","Clinton-Prairie School Corporation Ecas",189451
+"181","IN","Concord Community Schools - Ecas",197205
+"182","IN","Covington Community School Corporation",199959
+"183","IN","Covington Community School Corporation - Ecas",197206
+"184","IN","Cowan Community School Corporation",203188
+"185","IN","Cowan Community School Corporation - Ecas",199960
+"186","IN","Daleville Community Schools",147795
+"187","IN","Daleville Community Schools - Ecas",199962
+"188","IN","Danville Community School Corporation - Ecas",199963
+"189","IN","Daviess-Martin Special Education Cooperative",189469
+"190","IN","Decatur County Community Schools - Ecas",189470
+"191","IN","Dekalb County Central Unit School Dist - Eca",199964
+"192","IN","Dekalb County Central Unit School District - Eca",1027379
+"193","IN","Dekalb County East Comm School Dist - Ecas",199965
+"194","IN","Dekalb County East Comm School District - Ecas",1027380
+"195","IN","Delaware Community School Corporation - Ecas",199966
+"196","IN","Dugger Union Community School Corporation",148182
+"197","IN","Duneland School Corporation - Ecas",196637
+"198","IN","East Gibson School Corporation",169576
+"199","IN","East Gibson School Corporation - Ecas",189479
+"200","IN","East Noble School Corporation - Ecas",401524
+"201","IN","East Washington School Corporation - Ecas",199969
+"202","IN","Eastbrook Community School Corporation - Ecas",189480
+"203","IN","Eastern Hancock County Comm School Corporation Ecas",189483
+"204","IN","Elwood Community School Corporation - Ecas",197210
+"205","IN","Fairfield Community Schools - Ecas",197211
+"206","IN","Flat Rock-Haw Creek School Corporation",203848
+"207","IN","Flat Rock-Hawcreek School Corporation - Ecas",196646
+"208","IN","Franklin Community School Corporation - Ecas",203845
+"209","IN","Franklin County Community School Corporation",43653
+"210","IN","Franklin County Community School Corporation - Ecas",189500
+"211","IN","Franklin Township Community School Corporation - Eca",197212
+"212","IN","Frankton-Lapel Comm School Corporation - Ecas",197213
+"213","IN","Fremont Community Schools - Ecas",401527
+"214","IN","Frontier School Corporation",199973
+"215","IN","Frontier School Corporaton - Ecas",199974
+"216","IN","Gary Community School Corporation - Ecas",401530
+"217","IN","Goshen Community Schools - Ecas",197214
+"218","IN","Greene-Sullivan Special Education County-Op",189511
+"219","IN","Greensburg Community Schools - Ecas",189515
+"220","IN","Greenwood Community School Corporation - Ecas",203846
+"221","IN","Hamilton Community Schools",200497
+"222","IN","Hamilton Community Schools - Ecas",401535
+"223","IN","Hammond School City",820605
+"224","IN","Hanover Community School Corporation - Ecas",401536
+"225","IN","Huntington County Community School Corporation Ecas",189535
+"226","IN","Irvington Community School",188136
+"227","IN","Jac-Cen-Del Community School Corporation",189545
+"228","IN","Jac-Cen-Del Community School Corporation - Ecas",189546
+"229","IN","Jay School Corporation",169577
+"230","IN","Jay School Corporation - Ecas",197215
+"231","IN","Kankakee Valley School Corporation - Eca",197216
+"232","IN","Kokomo School Corporation - Ecas",189552
+"233","IN","Lake Central School Corporation - Ecas",401548
+"234","IN","Lake Station Community Schools - Ecas",401550
+"235","IN","Lebanon Community School Corporation - Ecas",189565
+"236","IN","Liberty-Perry Community School Corporation Ecas",199986
+"237","IN","Loogootee Community School Corporation - Ecas",197217
+"238","IN","Manchester Community Schools - Ecas",401553
+"239","IN","Metropolitan School District of Lawrence Township",170638
+"240","IN","Metropolitan School District of Pike Township",169579
+"241","IN","Middlebury Community Schools - Ecas",197220
+"242","IN","Milan Community Schools - Ecas",189581
+"243","IN","Monroe-Gregg School District - Ecas",401556
+"244","IN","Mooresville Consol School Corporation - Ecs",401558
+"245","IN","N Vermillion Community School Corporation",199989
+"246","IN","N Vermillion Community School Corporation - Eca",401562
+"247","IN","Neighbors' Educational Opportunities",168499
+"248","IN","New Prairie United School Corporation - Ecas",401564
+"249","IN","Norht Newton School Corporation - Ecas",401567
+"250","IN","North Central Parke Comm School - Ecas",196713
+"251","IN","North Daviess Community Schools - Ecas",189606
+"252","IN","North Gibson School Corporation - Ecas",189607
+"253","IN","North Judson-San Pierre School Corporation",33292
+"254","IN","North Knox School Corporation - Ecas",203847
+"255","IN","North Lawrence Community Schools - Ecas",189610
+"256","IN","North Miami Community Schools",199990
+"257","IN","North Miami Community Schools - Ecas",197225
+"258","IN","North Montgomery Comm School Corporation - Ecas",281373
+"259","IN","North Newton School Corporation Ecas",401570
+"260","IN","North Posey County Metropolitan School District",171341
+"261","IN","Northeast Dubois County School Corporation",200498
+"262","IN","Northeast Dubois County School Corporation - Ecas",199991
+"263","IN","Northern Wells Community Schools - Ecas",199992
+"264","IN","Oregon-Davis School Corporation",200499
+"265","IN","Oregon-Davis School Corporation - Ecas",401572
+"266","IN","Orleans Community Schools",48805
+"267","IN","Orleans Community Schools - Ecas",196717
+"268","IN","Peru Community Schools - Ecas",197227
+"269","IN","Pioneer Regional School Corporation",207300
+"270","IN","Pioneer Regional School Corporation-Ecas",189627
+"271","IN","Plainfield Community School Corporation - Ecas",199994
+"272","IN","Prairie Heights Comm School Corporation - Ecas",197228
+"273","IN","Randolph Southern School Corporation",203849
+"274","IN","Randolph Southern School Corporation - Ecas",189634
+"275","IN","Ripley Ohio Dearborn Special Ed Cooperative",189637
+"276","IN","Rising Sun-Ohio County Comm School Corporation-Ecas",401574
+"277","IN","Rochester Community School Corporation - Ecas",189640
+"278","IN","Rossville Consolidated School Dist - Eca",189643
+"279","IN","S Vermillion Comm School Corporation - Ecas",401576
+"280","IN","School City of Hobart - Ecas",401577
+"281","IN","School City of Whiting - Ecas",401579
+"282","IN","School Town of Munster - Ecas",401580
+"283","IN","Scott County School District 1 - Ecas",189653
+"284","IN","Scott County School District 2 - Ecas",189654
+"285","IN","Scott County School District No. 1",1027404
+"286","IN","Scott County School District No. 2",1027387
+"287","IN","Sheridan Community Schools - Ecas",189655
+"288","IN","Shoals Community School Corporation",200500
+"289","IN","Shoals Community School Corporation - Ecas",197230
+"290","IN","South Dearborn Comm School Corporation - Ecas",189658
+"291","IN","South Henry School Corporation",200000
+"292","IN","South Henry School Corporation - Ecas",199999
+"293","IN","South Knox School Corporation - Ecas",203851
+"294","IN","South Madison Community School Corporation-Ecas",197231
+"295","IN","South Montgomery Comm School Corporation - Ecas",281372
+"296","IN","Southern Wells Community Schools",200002
+"297","IN","Southern Wells Community Schools - Ecas",200001
+"298","IN","Southwest Park Comm School Corporation - Ecas",196744
+"299","IN","Spencer-Owen Community Schools - Ecas",196747
+"300","IN","Switzerland County School Corporation - Ecas",401588
+"301","IN","The Bloomington Project School",148225
+"302","IN","Tippecanoe School Corporation - Ecas",401589
+"303","IN","Tipton Community School Corporation - Ecas",401590
+"304","IN","Tri-Central Community Schools - Ecas",401597
+"305","IN","Tri-County School Corporation",211082
+"306","IN","Tri-County School Corporation - Ecas",200006
+"307","IN","Tri-Creek School Corporation - Ecas",401598
+"308","IN","Triton School Corporation",200007
+"309","IN","Triton School Corporation - Ecas",197235
+"310","IN","Twin Lakes School Corporation - Ecas",200008
+"311","IN","Union School Corporation - Ecas",189678
+"312","IN","Vigo County School Corporation - Ecas",401602
+"313","IN","Vincennes Community School Corporation - Ecas",203852
+"314","IN","Wa-Nee Community Schools - Ecas",197236
+"315","IN","Warrick County School Corporation - Ecas",200010
+"316","IN","Warsaw Community Schools - Ecas",197237
+"317","IN","Wes-Del Community School Corporation - Ecas",200011
+"318","IN","West Central School Corporation",169581
+"319","IN","West Central School Corporation - Ecas",189703
+"320","IN","West Noble School Corporation - Ecas",401609
+"321","IN","West Washington School Corporation",42841
+"322","IN","West Washington School Corporation - Ecas",200012
+"323","IN","Western Boone School Corporation - Ecas",189704
+"324","IN","Western School Corporation - Ecas",189705
+"325","IN","Westview School Corporation - Ecas",197238
+"326","IN","White River Valley School District",43707
+"327","IN","White River Valley School District - Eca",189710
+"328","IN","Whitely County Cnsld School Corporation - Ecas",200014
+"329","IN","Whitko Community School Corporation - Ecas",197239
+"330","KS","A.N.W. Special Education Cooperative No. 603",33478
+"331","KS","Bourbon County Unified School District 234",33483
+"332","KS","Butler County Special Education Interlocal No. 638",57453
+"333","KS","High Plains Educational Cooperative District Number 611",33509
+"334","KS","Interlocal No. 608 Northeast Kansas Education Service Center",74721
+"335","KS","North Central Kansas Special Education Cooperative Interlocal 636",48557
+"336","KS","Reno County Education Cooperative No. 610",33543
+"337","KS","Sedgwick County Area Educational Services Interlocal Cooperative",33554
+"338","KS","Shawnee Mission Union School District No. 512",196794
+"339","KS","South Central Kansas Special Education Cooperative",41717
+"340","KS","Southeast Kansas Education Service Center",40507
+"341","KS","Southeast Kansas Special Education Interlocal 637",49456
+"342","KS","Southwest Kansas Area Cooperative District No 613",58420
+"343","KS","Southwest Plains Regional Service Center Unified School District No. 626",47229
+"344","KS","Tri-County Special Education Cooperative No. 607",33532
+"345","KS","Unified School Distrct No. 379",167602
+"346","KS","Unified School District No. 230",42799
+"347","KS","Unified School District No. 364",167610
+"348","KS","Unified School District No. 373",169692
+"349","KS","Unified School District No. 418",33525
+"350","KY","West Kentucky Educational Cooperative",41857
+"351","LA","Bienville Parish Tax Agency Fund of the Bienville Parish School Board",75111
+"352","LA","Bossier Parish School Board - Bossier Education Excellence Fund",168506
+"353","LA","City of Central School Board",75380
+"354","LA","Lafourche Parish Special Education District No 1",76144
+"355","LA","Louisiana School Employees Retirement System",76312
+"356","LA","Washington Parish School Board - Wesley Ray Elementary School Cash Activity Account",168586
+"357","MA","Diman Regional Vocational Technical High School",196825
+"358","MA","Lower Pioneer Valley Educational Collaborative",171166
+"359","MA","Seven Hills Charter Public School",189865
+"360","ME","Central Lincoln County School System",54385
+"361","ME","Indian Township Passamaquoddy School Committee",93954
+"362","ME","Maine School Administrative District No. 1",33925
+"363","ME","Maine School Administrative District No. 46",33940
+"364","ME","Maine School Administrative District No. 64",1035655
+"365","MI","Adams Schools",161847
+"366","MI","Allegan Area Educational Service Agency",34336
+"367","MI","Alpena-Montmorency-Alcona Educational Service District",34338
+"368","MI","Arenac Eastern School District",161439
+"369","MI","Barry Intermediate School District",161432
+"370","MI","Bay-Arenac Community High School",161443
+"371","MI","Bay-Arenac ISD",34351
+"372","MI","Berrien Regional Education Service Agency",161444
+"373","MI","Big Burning School",161547
+"374","MI","Black River Public School",161627
+"375","MI","Branch Intermediate School District",161452
+"376","MI","Branch Line School",161644
+"377","MI","Burt Township School District No. 2",161625
+"378","MI","C.O.O.R. Intermediate School District",34614
+"379","MI","Calhoun Intermediate School District",34372
+"380","MI","Charlevoix-Emmet Intermediate School District",161477
+"381","MI","Chatfield School",161564
+"382","MI","Cheboygan-Otsego-Presque Isle Educational Service District",161483
+"383","MI","Clare-Gladwin Regional Education Service District",41874
+"384","MI","Clinton County Regional Educational Service Agency",161492
+"385","MI","Coon School, Berlin Township School District #3",161539
+"386","MI","Copper Country Intermediate School District",34437
+"387","MI","Cornerstone Health & Technology High School",161671
+"388","MI","Delta-Schoolcraft Intermediate School District",161499
+"389","MI","Detroit Public Schools",161679
+"390","MI","Dickinson-Iron Intermediate School District",161502
+"391","MI","Dr. Joseph F. Pollack Academic Center of Excellence",161686
+"392","MI","Eastern Upper Peninsula Intermediate School District",34385
+"393","MI","Eaton Regional Education Service Agency",161507
+"394","MI","Eccles School",161848
+"395","MI","Flex High School of Michigan",161513
+"396","MI","Flextech High School",161584
+"397","MI","Flextech High School Shepherd",161531
+"398","MI","Francis Street Primary School",161568
+"399","MI","Genesee School District #6",161517
+"400","MI","Gogebic-Ontonagon Intermediate School District",161533
+"401","MI","Gratiot-Isabella Regional Education Service District",161534
+"402","MI","Hillsdale County Intermediate School District",161578
+"403","MI","Honey Creek Community School",161653
+"404","MI","Huron Intermediate School District",161585
+"405","MI","Ingham Intermediate School District",161586
+"406","MI","Ionia County Intermediate School District",161587
+"407","MI","Iosco Regional Educational Service Agency",161589
+"408","MI","Jackson County Intermediate School District",161590
+"409","MI","Kalamazoo Regional Educational Service Agency",161596
+"410","MI","Kensington Woods Schools",161597
+"411","MI","Kent Intermediate School District",161598
+"412","MI","Kingsbury Country Day School",161737
+"413","MI","Lakeshore Public School",161454
+"414","MI","Lapeer County Intermediate School District",161606
+"415","MI","Lenawee Intermediate School District",161607
+"416","MI","Lewis Cass Intermediate School District",161609
+"417","MI","Livingston Educational Service Agency",161614
+"418","MI","Macomb Intermediate School District",1091484
+"419","MI","Manistee Intermediate School District",161619
+"420","MI","Marquette-Alger Regional Educational Service Agency",161754
+"421","MI","Mason County Eastern School District",161656
+"422","MI","Mecosta-Osceola Intermediate School District",161761
+"423","MI","Melvindale-Northern Allen Park Public Schools",1238558
+"424","MI","Menominee County Intermediate School District",161765
+"425","MI","Midland County Educational Service Agency",34544
+"426","MI","Monroe County Intermediate School District",161773
+"427","MI","Montcalm Area Intermediate School District",161774
+"428","MI","Muskegon Area Intermediate School District",1091490
+"429","MI","Newaygo County Regional Educational Service Agency",161795
+"430","MI","NexTech High School",161797
+"431","MI","North Dickinson County School District",161509
+"432","MI","North LeValley School, Ionia Township School District #2F",161588
+"433","MI","Oakland FlexTech High School",169609
+"434","MI","Oakland Schools",41824
+"435","MI","Old Mission Peninsula School",161809
+"436","MI","Ottawa Area Intermediate School District",161813
+"437","MI","Public Schools of the City of Muskegon",161785
+"438","MI","Redford Township District Library",281394
+"439","MI","River School - Sodus Township #5",161465
+"440","MI","Riverside School - Hagar Township #6",161447
+"441","MI","Sanilac Intermediate School District",161842
+"442","MI","School District of the City of East Lansing",161558
+"443","MI","School District of the City of Highland Park",161720
+"444","MI","School District of the City of Inkster",161845
+"445","MI","School District of the City of Muskegon Heights",161783
+"446","MI","School District of the City of Saginaw",161839
+"447","MI","Shiawassee Regional Educational Service District",42599
+"448","MI","St. Joseph County Intermediate School District",1091502
+"449","MI","The Greenspire School",161865
+"450","MI","The James and Grace Lee Boggs School",161866
+"451","MI","Traverse Bay Area Intermediate School District",161871
+"452","MI","Tuscola Intermediate School District",161874
+"453","MI","University Prep Art and Design",190004
+"454","MI","Van Buren Intermediate School District",34656
+"455","MI","Verona Mills School",161884
+"456","MI","Washtenaw Intermediate School District",161897
+"457","MI","Wayne County Regional Educational Service Agency",161900
+"458","MI","West Shore Educational Service District",55945
+"459","MI","Wexford Missaukee Intermediate School District",161910
+"460","MI","Windover High School",161918
+"461","MI","Woodland School",161920
+"462","MN","Area Special Education Cooperative",167796
+"463","MN","Educational Cooperative Service Unit of the Metropolitan Twin Cities Area",103115
+"464","MN","Farmington Independent School District No. 192",196916
+"465","MN","Independent School District 2142",34898
+"466","MN","Independent School District 2198",169423
+"467","MN","Independent School District No. 001",167819
+"468","MN","Independent School District No. 181",167801
+"469","MN","Independent School District No. 194",167813
+"470","MN","Independent School District No. 199",1035651
+"471","MN","Independent School District No. 2155",34914
+"472","MN","Independent School District No. 2174",81335
+"473","MN","Independent School District No. 241",34834
+"474","MN","Independent School District No. 272",34837
+"475","MN","Independent School District No. 273",34838
+"476","MN","Independent School District No. 2905",56107
+"477","MN","Independent School District No. 31",34807
+"478","MN","Independent School District No. 51",34810
+"479","MN","Independent School District No. 535",34873
+"480","MN","Independent School District No. 544",167820
+"481","MN","Independent School District No. 553",1035649
+"482","MN","Independent School District No. 6070-50",169425
+"483","MN","Independent School District No. 625",34887
+"484","MN","Independent School District No. 690",1035650
+"485","MN","Independent School District No. 706",34896
+"486","MN","Independent School District No. 742",81329
+"487","MN","Independent School District No. 77",81348
+"488","MN","Independent School District No. 88",34813
+"489","MN","Independent School District No. 94",34814
+"490","MN","Lakes Country Service Cooperative",40828
+"491","MN","Minnesota Office of Higher Education",40499
+"492","MN","Northwest Service Cooperative",43663
+"493","MN","Perham Independent School District No. 549",196908
+"494","MN","Saint Paul Public Schools",1240701
+"495","MN","Southwest and West Central Service Cooperative",34857
+"496","MN","Special School District No. 6",42341
+"497","MO","Barton County R-1 School District",190080
+"498","MO","Consolidated School District No IV of Jackson County",35234
+"499","MO","Fort Zumwalt School District",35302
+"500","MO","Lawrence County R-9 School District",44607
+"501","MO","Lincoln County R-III School District",35260
+"502","MO","Pemiscot County Special School District",35283
+"503","MO","Reogranized School District R-II of Cape Girardeau County",167912
+"504","MO","Reorganized School Distict No IV of Jackson County",167913
+"505","MO","Reorganized School District No II of Barton County",167915
+"506","MO","Reorganized School District No. 1",167914
+"507","MO","Reorganized School District R-IV of Lincoln",167916
+"508","MO","Saint Charles R-VI School District",167917
+"509","MS","Carroll County School District",99101
+"510","MS","Hollandale School District",35087
+"511","MT","Bear Paw Cooperative",47377
+"512","MT","Bitterroot Special Education Cooperative",190128
+"513","MT","Missoula Area Education Cooperative",43123
+"514","MT","Prickly Pear Special Education Cooperative",35410
+"515","NC","Kipp Enc Public Schools",53871
+"516","NC","Sallie B Howard School",190199
+"517","ND","Lake Region Special Education District",224972
+"518","ND","Minot Air force Base Public School District No. 160",36830
+"519","ND","Morton-Sioux Special Education Unit",36817
+"520","ND","North Valley Area Career and Technology Center",36827
+"521","ND","Upper Valley Special Education District",36828
+"522","ND","Wil-Mac Multidistrict Special Education Unit",47416
+"523","NE","Antelope County School District No. 9",190329
+"524","NE","Board of Education of School District #83",197017
+"525","NE","Burt County School District No. 1",190383
+"526","NE","Cass County School District No. 1",108696
+"527","NE","Dodge County School District No. 001",109135
+"528","NE","Doniphan-Trumbull Public Schools District No. 40",108954
+"529","NE","Douglas County School District #0001",35480
+"530","NE","Douglas County School District No. 10",109092
+"531","NE","Douglas County School District No. 54",109441
+"532","NE","Educational Service Unit No. 10",35469
+"533","NE","Educational Service Unit No. 2",35477
+"534","NE","Educational Service Unit No. 7",43078
+"535","NE","Ewing Public Schools District No. 29",190272
+"536","NE","Grant County School District No. 38-0011",196989
+"537","NE","Hall County School District 2",190279
+"538","NE","Lancaster County School District 001",35487
+"539","NE","Nebraska Unified School District 1",108682
+"540","NE","Roseland School District No. 01-0123",108710
+"541","NE","Sarpy County School District No. 46",224533
+"542","NE","School District No. 55-0145",109716
+"543","NE","Scotts Bluff County School District No. 16",93980
+"544","NE","Warner School District Number I-74",190227
+"545","NE","Washington County School District No. 1",35503
+"546","NE","Wayne County School District No. 595",190396
+"547","NH","School Administration Unit 24",190413
+"548","NH","School Administrative Unit No. 16",35594
+"549","NH","School Administrative Unit No. 44",64964
+"550","NJ","Bergen County Special Services School District",42509
+"551","NJ","Bergen County Technical and Vocational High School District",42533
+"552","NJ","Bergenfield Board of Education",43070
+"553","NJ","Borough of Roselle School District",35882
+"554","NJ","Burlington County Institute of Technology",35613
+"555","NJ","City of Atlantic City Board of Education",81924
+"556","NJ","City of Elizabeth School District",46287
+"557","NJ","City of Orange Township Public Schools",108027
+"558","NJ","Colts Neck Township School District",168105
+"559","NJ","Cumberland County Board of Vocational Education",168034
+"560","NJ","Educational Services Commission of New Jersey",35821
+"561","NJ","Essex Regional Educational Services Commission",35785
+"562","NJ","Gloucester County Special Services School District",42049
+"563","NJ","Gloucester County Vocational Technical School District",41175
+"564","NJ","Hackettstown School District",168104
+"565","NJ","Hudson County Schools of Technology",35621
+"566","NJ","Manchester Regional High School Board of Education",49358
+"567","NJ","Mercer County Special Services School District",35624
+"568","NJ","Middlesex County Vocational and Technical High Schools",35626
+"569","NJ","Ocean City Board of Education",81960
+"570","NJ","Ocean County Vocational-Technical School District",225180
+"571","NJ","Pennsauken Township School District",197042
+"572","NJ","Salem County Vocational Technical School District",35634
+"573","NJ","Township of Middle Board of Education",197035
+"574","NJ","Union County Vocational-Technical Schools",40616
+"575","NM","Central Region Educational Cooperative 5",40492
+"576","NM","Cuba Independent School District No. 62",44045
+"577","NM","Las Cruces Public Schools District No. 2",35936
+"578","NM","Region IX Education Cooperative",46777
+"579","NM","Regional Education Cooperative VII",40493
+"580","NY","Board of Cooperative Educational Services First Supervisory District of Erie County",40354
+"581","NY","Board of Cooperative Educational Services of Nassau County",45052
+"582","NY","Board of Cooperative Educational Services of Rockland County",36365
+"583","NY","Boces Genesee Livingston Steuben and Wyoming Counties",36222
+"584","NY","Boces Second Supervisory District of Monroe and Orleans Counties",197977
+"585","NY","Broome-Tioga Boces",36120
+"586","NY","Clinton-Essex-Warren-Washington Counties Boces",36154
+"587","NY","Dutchess County Board of Cooperative Educational Services",197096
+"588","NY","Eastern Suffolk Boces",41001
+"589","NY","Edgemont Union Free School District",1265354
+"590","NY","Greater Southern Tier Boces",36395
+"591","NY","Jefferson-Lewis-Hamilton-Herkimer-Oneida Boces",36216
+"592","NY","Oneida Herkimer and Madison Counties Boces",36301
+"593","NY","Onondaga Cortland Madison Boces",36313
+"594","NY","Orange Ulster Boces",36333
+"595","NY","Orleans-Niagara Boces",36336
+"596","NY","Oswego County Board of Cooperative Educational Services",197102
+"597","NY","Otsego Northern Catskills BOCES",168209
+"598","NY","South Glens Falls Central School",36375
+"599","NY","Southern Westchester Boces",36479
+"600","NY","Ulster County Board of Cooperative Educational Services",43817
+"601","NY","Unatego Central School District",36348
+"602","NY","Washington Saratoga Warren Hamilton Essex Counties Boces",40423
+"603","NY","Western Suffolk Boces",36430
+"604","OH","Apollo Career Center",42336
+"605","OH","Ashland County-West Holmes Joint Vocational School District",36992
+"606","OH","Ashtabula County Educational Service Center",91093
+"607","OH","Ashtabula County Technical and Career Center",36999
+"608","OH","Athens-Meigs Educational Service Center",45721
+"609","OH","Auburn Vocational School District",41866
+"610","OH","Auglaize County Educational Service Center",52127
+"611","OH","Buckeye Joint Vocational School District",37290
+"612","OH","Buckeye Online School for Success",82667
+"613","OH","Butler County Educational Service Center",42985
+"614","OH","Butler Technology and Career Development Schools",46507
+"615","OH","Canton College Preparatory School",82703
+"616","OH","Canton Harbor High School",82705
+"617","OH","Capital City Career Prep High School",168650
+"618","OH","Career and Technology Education Centers of Licking County",37146
+"619","OH","Cascade Career Prep High School",168651
+"620","OH","Clay Avenue Community School",53699
+"621","OH","Collins Career Center",57390
+"622","OH","Columbiana County Career and Technical Center",82840
+"623","OH","Columbus Clippers",188320
+"624","OH","Constellation Schools Madison Community Elementary School District",82897
+"625","OH","Constellation Schools Old Brooklyn Community Elementary School District",82898
+"626","OH","Constellation Schools Parma Community",82900
+"627","OH","Constellation Schools Stockyard Community Elementary School District",82903
+"628","OH","Constellation Schools Westpark Community Elementary School District",82905
+"629","OH","Constellation Schools Westside Community School of the Arts",82907
+"630","OH","Coshocton County Career Center",82922
+"631","OH","Darke County Educational Service Center",43620
+"632","OH","Dayton Leadership Academies - Dayton View",65526
+"633","OH","Eastland Fairfield Career and Technical Schools",197128
+"634","OH","Educational Service Center of Central Ohio",91095
+"635","OH","Educational Service Center of Lake Erie West",43936
+"636","OH","Educational Service Center of Northeast Ohio",37068
+"637","OH","Ehove Career Center",46503
+"638","OH","Four County Career Center",83122
+"639","OH","Foxfire High School",83125
+"640","OH","Gallia-Jackson-Vinton Joint Vocational School District",37095
+"641","OH","Gallia-Vinton Educational Service Center",51041
+"642","OH","Great Oaks Career Campuses",37116
+"643","OH","Greater Summit County Early Learning Center Elementary School",83225
+"644","OH","Hamilton County Educational Service Center",41864
+"645","OH","Harrisburg Pike Community School",83288
+"646","OH","iLEAD Spring Meadows",83385
+"647","OH","Kids Care Elementary",83453
+"648","OH","Knox County Career Center",37133
+"649","OH","Life Skills - Lake Erie International High School",83539
+"650","OH","Life Skills Center of Elyria",83545
+"651","OH","Life Skills Invictus High School",83551
+"652","OH","Life Skills Marshall High School",83552
+"653","OH","Lighthouse Community School",83554
+"654","OH","Lorain Community School",190675
+"655","OH","Lorain County Joint Vocational School District",37160
+"656","OH","Madison Avenue School of Arts",54236
+"657","OH","Mahoning County Career and Technical Center",37174
+"658","OH","Mahoning County Educational Service Center",42308
+"659","OH","Mahoning Unlimited Classroom",83638
+"660","OH","Mason Run High School",83688
+"661","OH","Medina County Joint Vocational School District",83712
+"662","OH","Mercer County Educational Service Center",45659
+"663","OH","Miami Valley Academies",83751
+"664","OH","Miami Valley Career Technology Center",41691
+"665","OH","Mid-East Career and Technology Centers",83757
+"666","OH","Mid-Ohio Educational Service Center",65312
+"667","OH","Middle Bass Local School District",83759
+"668","OH","Midnimo Cross Cultural Middle School",83769
+"669","OH","Midwest Regional Educational Service Center",66036
+"670","OH","Montgomery County Educational Service Center",37196
+"671","OH","Mound Street Academies",83842
+"672","OH","Muskingum Valley Educational Service Center",43879
+"673","OH","New Albany Plain Local School District",51585
+"674","OH","Newbury Local School District",83915
+"675","OH","North Bass Local School District",83938
+"676","OH","North Central Ohio Educational Service Center",39606
+"677","OH","North Woods Career Prep High School",168660
+"678","OH","Northwest Ohio Educational Service Center",41867
+"679","OH","Ohio Digital Learning School",190704
+"680","OH","Ohio Hi-Point Joint Vocational School District",84002
+"681","OH","Pathway School of Discovery",51543
+"682","OH","Penta Career Center",37314
+"683","OH","Pickaway-Ross Career and Technology Center",84110
+"684","OH","Pike County Joint Vocational School District",84118
+"685","OH","Pioneer Career and Technology Center",84123
+"686","OH","Polaris Career Center",37069
+"687","OH","Portage Lakes Career Center",37272
+"688","OH","Putnam County Educational Service Center",37228
+"689","OH","Riverside Community School Inc",84246
+"690","OH","Ross-Pike Educational Service District",46519
+"691","OH","Scioto County Career Technical Center",37249
+"692","OH","Southern Ohio Educational Service Center",44854
+"693","OH","Springfield Clark Career Technology Center",84409
+"694","OH","Stark County Area Vocational School District",84428
+"695","OH","Stark County Educational Service Center",47572
+"696","OH","Summit Educational Service Center",84500
+"697","OH","The Graham School",84540
+"698","OH","Tolles Career and Technical Center",48590
+"699","OH","Tri-County Career Center",37003
+"700","OH","Tri-County Educational Service Center",65134
+"701","OH","Tri-Rivers Joint Vocational School District",37176
+"702","OH","Trumbull Career and Technical Center",37282
+"703","OH","U. S. Grant Joint Vocational School District",84609
+"704","OH","Upper Valley Career Center",37186
+"705","OH","Vanguard-Sentinel Career and Technology Centers",84655
+"706","OH","Vantage Career Center",84658
+"707","OH","Warren County Career Center",55912
+"708","OH","Warren County Educational Service Center",58375
+"709","OH","Washington County Career Center",37302
+"710","OH","Wood County Educational Service Center",40327
+"711","OH","Zanesville Community High School",84831
+"712","OK","Atoka School District No. 1-15",190734
+"713","OK","Caddo Kiowa Technology Center School District No 2",37375
+"714","OK","Canadian Valley Technology Center No.6",37378
+"715","OK","Catoosa Public Schools I-2",190769
+"716","OK","Central High Independent School District No. 34",146943
+"717","OK","Choctaw Nation Interlocal Cooperative School District Number 7-K002",148644
+"718","OK","Five Star Interlocal Cooperative",48680
+"719","OK","Francis Tuttle Technology Center School District No. 21",37456
+"720","OK","Grant County Educational Facilities Authority",149585
+"721","OK","Greasy Public School District C-32",147131
+"722","OK","Great Plains Technology Center School District No.9",103048
+"723","OK","Hilldale Independent School District No. 1-29",227707
+"724","OK","Kiamichi Technology Center No. 7",37418
+"725","OK","Moore Norman Technology Center District 17",84944
+"726","OK","Mulhall-Orlando Independent School District No. 42-1003",147345
+"727","OK","North Rock Creek School District C-10",200042
+"728","OK","Osage County Interlocal Cooperative School District 57 K-001",37462
+"729","OK","South Oklahoma City Area School District",147600
+"730","OK","Southern Oklahoma Technology Center V-20",65192
+"731","OK","Sovereign Community School District No. J-4",168683
+"732","OK","Tri-County Interlocal Co-Op, School District K001",46042
+"733","OK","Tulsa Technology Center No. 18",41367
+"734","OK","Zion School District No. C028",65021
+"735","OR","Annex School District No. 29",86249
+"736","OR","Arlington School District No. 3",85692
+"737","OR","Benton County School District 7j",90838
+"738","OR","Blachly School District No. 90",86129
+"739","OR","Burnt River School District No. 30-J",90967
+"740","OR","Center for Advanced Learning",85223
+"741","OR","Clackamas County School District No. 108",90958
+"742","OR","Clackamas Education Service District",164419
+"743","OR","Columbia Gorge Education Service District",153351
+"744","OR","Coos County School District No. 13",90823
+"745","OR","Coos County School District No. 31",85391
+"746","OR","Coos County School District No. 41",85392
+"747","OR","Coos County School District No. 54",228087
+"748","OR","Corbett School District No. 39",190981
+"749","OR","Deschutes County School District 1",37616
+"750","OR","Douglas County School District No. 12",85526
+"751","OR","Douglas County School District No. 19",86943
+"752","OR","Douglas County School District No. 21",85193
+"753","OR","Douglas County School District No. 32",85531
+"754","OR","Douglas County School District No. 34",85532
+"755","OR","Douglas County School District No. 4",90860
+"756","OR","Douglas County School District No. 70",85534
+"757","OR","Douglas Education Service District",190960
+"758","OR","Fossil School District 21j",85664
+"759","OR","Grant County Educational Service District",85722
+"760","OR","Grant County School District 16j",90914
+"761","OR","Grant County School District No. 4",85730
+"762","OR","Harney County Educational Service District Region XVII",164421
+"763","OR","Harney County School District No. 13",85770
+"764","OR","Harney County School District No. 16",85779
+"765","OR","Harney County School District No. 28",85781
+"766","OR","Harney County School District No. 4",85784
+"767","OR","Harney County School District No. 5",85785
+"768","OR","Harney County School District No. 7",85786
+"769","OR","Harper School District No. 66",86253
+"770","OR","High Desert Education Service District",197340
+"771","OR","Huntington School District No. 16J",90820
+"772","OR","Insight School of Oregon Painted Hills",85894
+"773","OR","Intermountain Educational Service District",55430
+"774","OR","Ione School District 2",85902
+"775","OR","Jackson County School District 549c",37631
+"776","OR","Jackson County School District No. 35",85926
+"777","OR","Jackson County School District No. 4",85927
+"778","OR","Jackson County School District No. 5",90887
+"779","OR","Jackson County School District No. 59",85930
+"780","OR","Jackson County School District No. 6",85931
+"781","OR","Jackson County School District No. 9",85558
+"782","OR","Jackson County School District No. 91",85933
+"783","OR","Jackson County School District No. 94",85934
+"784","OR","Jane Goodall Environmental Middle School",85942
+"785","OR","Jefferson County Educational Service District",85953
+"786","OR","Jefferson County School District No. 8",85959
+"787","OR","Lake County Educational Service District",164427
+"788","OR","Lake County School District No. 11",190992
+"789","OR","Lake County School District No. 14",86084
+"790","OR","Lake County School District No. 18",86085
+"791","OR","Lake County School District No. 21",86086
+"792","OR","Lane County School District No. 32",86118
+"793","OR","Lane County School District No. 4j",94017
+"794","OR","Lane Education Service District",86132
+"795","OR","Lane Library District",86134
+"796","OR","Linn-Benton-Lincoln Educational Service District",164429
+"797","OR","Malheur County School District No. 12",90883
+"798","OR","Malheur Educational Service District",164430
+"799","OR","Mckenzie School District No. 68",86311
+"800","OR","Mosier Community School",86419
+"801","OR","Multnomah County School District No. 1J",37671
+"802","OR","Multnomah County School District No. 3",86450
+"803","OR","Multnomah County School District No. 7",197346
+"804","OR","Multnomah Education Service District",164432
+"805","OR","North Central Educational Service District",164433
+"806","OR","North Powder School District",87147
+"807","OR","Northwest Regional Education Service District",164434
+"808","OR","Pine Eagle School District No. 61",86652
+"809","OR","Region 18 Educational Service District",153367
+"810","OR","Sage Community School",86818
+"811","OR","Siletz Valley School",86888
+"812","OR","South Coast Educational Service District",164439
+"813","OR","South Columbia Family School",86926
+"814","OR","South Harney School District No. 33",85783
+"815","OR","Southern Oregon Education Service District",191001
+"816","OR","Springwater Environmental Sciences School",86961
+"817","OR","The Emerson School",190961
+"818","OR","The Lighthouse School",190977
+"819","OR","Umatilla County School District No. 8R",87124
+"820","OR","Union County School District 23",90888
+"821","OR","Union County School District No. 1",87143
+"822","OR","Union County School District No. 11",85890
+"823","OR","Union County School District No. 15",87144
+"824","OR","Union High School District No. 1j",85780
+"825","OR","Wahtonka Community School",190996
+"826","OR","Wallowa School District #12",87209
+"827","OR","Wasco County School District No. 29",90886
+"828","OR","Wheeler County School District No. 1",87300
+"829","OR","Willamette Education Service District",197358
+"830","PA","Appalachia Intermediate Unit 8",60736
+"831","PA","Arin Intermediate Unit 28",38009
+"832","PA","Beaver Valley Intermediate Unit",37872
+"833","PA","Berks Career and Technology Center",95696
+"834","PA","Berks County Intermediate Unit",400715
+"835","PA","Blast Intermediate Unit 17",38074
+"836","PA","Bucks County Intermediate Unit 22",151326
+"837","PA","Bucks County Technical High School",42507
+"838","PA","Capital Area Intermediate Unit",37958
+"839","PA","Carbon Lehigh Intermediate Unit 21",38055
+"840","PA","Career Technology Center of Lackawanna County",87518
+"841","PA","Central Susquehanna Intermediate Unit No. 16",153402
+"842","PA","Clearfield County Career and Technology Center",37948
+"843","PA","Colonial Intermediate Unit 20",38112
+"844","PA","Dauphin County Technical School",37966
+"845","PA","Delaware County Technical Schools",197364
+"846","PA","Delaware Intermediate Unit County",151348
+"847","PA","Eastern Center for Arts and Technology",38103
+"848","PA","Greater Altoona Career and Technology Center",37893
+"849","PA","Greater Johnstown Area Vocational Technical School",37923
+"850","PA","Indiana County Technology Center",38008
+"851","PA","Jefferson County-Dubois Area Vocational Technical School",65034
+"852","PA","Lancaster County Career and Technology Center",41216
+"853","PA","Lancaster-Lebanon Intermediate Unit 13",38038
+"854","PA","Lebanon County Career and Technology Center",38049
+"855","PA","Lehigh Career and Technical Institute",46359
+"856","PA","Lenape Technical School",37862
+"857","PA","Luzerne Intermediate Unit",38066
+"858","PA","Montgomery County Intermediate Unit",151386
+"859","PA","Northeastern Educational Intermediate Unit",38023
+"860","PA","Northeastern School District",38192
+"861","PA","Northwest Tri-County Intermediate Unit",228813
+"862","PA","Pittsburgh-Mount Oliver Intermediate Unit 2",37852
+"863","PA","Riverview Intermediate Unit 6",37940
+"864","PA","School District of the City of York",87500
+"865","PA","Schuylkill Technology Center",38133
+"866","PA","Seneca Highlands Intermediate Unit Nine",42756
+"867","PA","Somerset County Technology Center",55884
+"868","PA","Tuscarora Intermediate Unit 11",38081
+"869","PA","Venango Technology Center",38154
+"870","PA","Wilkes-Barre Area Career and Technical Center",38068
+"871","PA","York County School of Technology",38200
+"872","SC","Clover School District Number Two",45162
+"873","SC","Denmark-Olar School District No. Two of Bamberg County",168833
+"874","SC","Fort Mill School District Four",38374
+"875","SC","Greenwood County School District 51",38343
+"876","SC","Laurens County School District 56",38350
+"877","SD","Black Hills Special Services Cooperative",38433
+"878","SD","Cornbelt Educational Cooperative",65042
+"879","SD","Crazy Horse School",153631
+"880","SD","Little Eagle Grant School",103098
+"881","SD","Redfield School District No. 56",1035654
+"882","SD","South Central Cooperative",54697
+"883","SD","Southeast Area Cooperative",38445
+"884","TN","Alamo City Schools",106528
+"885","TN","Athens City Board of Education",40334
+"886","TN","Bells City School",106569
+"887","TN","Bells City School Board of Education",106570
+"888","TN","Board of Education Town of Greeneville",401769
+"889","TN","Collierville City Schools",106715
+"890","TN","Compass Community Schools",168875
+"891","TN","Crosstown High School",106744
+"892","TN","Explore Community School",106829
+"893","TN","Greeneville-Greene County Center for Technology",106895
+"894","TN","Humboldt Board of Education",106978
+"895","TN","Kenton Special School District",107060
+"896","TN","Lenoir City Schools",107101
+"897","TN","Lexington City School System",107110
+"898","TN","Little Tennessee Valley Educational Cooperative",198024
+"899","TN","Metropolitan Nashville Public Schools",107203
+"900","TN","Millington Municipal Schools Internal School Funds",107215
+"901","TN","Oak Ridge City School fund",107280
+"902","TN","Perea Elementary School",107307
+"903","TN","Robertson County Schools",401793
+"904","TN","Shelby County Schools",107431
+"905","TN","Tennessee School Boards Unemployment Compensation Trust",107402
+"906","TN","The Franklin County School Department",151433
+"907","TN","Union City Schools",107534
+"908","TN","Z--Cart Test",191336
+"909","TX","Ector Independent School District",163559
+"910","TX","Education Service Center Region 10",45474
+"911","TX","Education Service Center Region 11",40486
+"912","TX","Education Service Center Region XIV",40358
+"913","TX","Education Service Center Region XV",40219
+"914","TX","Harris County Department of Education",40864
+"915","TX","Higgins Independent School District",163651
+"916","TX","Region 16 Education Service Center",39146
+"917","TX","Region 17 Education Service Center",40357
+"918","TX","Region 18 Education Service Center",41696
+"919","TX","Region 19 Education Service Center",38927
+"920","TX","Region 9 Education Service Center",39246
+"921","TX","Region III Education Service Center",39230
+"922","TX","Region VII Education Service Center",41686
+"923","TX","Region VIII Education Service Center",39207
+"924","UT","Bridge Elementary",169058
+"925","UT","Central Utah Educational Services",102367
+"926","UT","Medical School Campus PID",197631
+"927","UT","Northeastern Utah Educational Services",102418
+"928","UT","Salt Lake City Open Classroom",197633
+"929","UT","The Winter Sports School in Park City",102449
+"930","UT","Uintah River High School",102455
+"931","UT","Walden School of Liberal Arts",102465
+"932","VT","Bennington-Rutland Supervisory Union",39364
+"933","VT","Caledonia Central Supervisory Union",44828
+"934","VT","Franklin Northeast Supervisory Union",43329
+"935","VT","Franklin West Supervisory Union",39373
+"936","VT","Grand Isle Supervisory Union",39374
+"937","VT","Lamoille North Supervisory Union",39375
+"938","VT","Orange East Supervisory Union",39376
+"939","VT","Orleans Central Supervisory Union",39377
+"940","VT","Orleans Southwest Supervisory Union",39379
+"941","VT","Two Rivers Supervisory Union",57407
+"942","VT","Windham Central Supervisory Union",39386
+"943","VT","Windham Northeast Supervisory Union",39387
+"944","VT","Windham Southeast School District",169242
+"945","VT","Windham Southeast Supervisory Union",39388
+"946","VT","Windham Southwest Supervisory Union",46659
+"947","VT","Windsor Central Supervisory Union",48634
+"948","VT","Windsor Southeast Supervisory Union",39390
+"949","WA","North Central Educational Service District No. 171",48842
+"950","WA","Olympic Educational Service District No. 114",39652
+"951","WA","United Schools Insurance Program",89386
+"952","WV","Southern Educational Services Cooperative",66409
