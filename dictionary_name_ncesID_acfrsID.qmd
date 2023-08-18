@@ -21,13 +21,14 @@ Goal: construct a dictionary that links entity name, acfrs id, nces id
 # ACFRs school districts that have ncesID
 
 ```{r}
-# data queried July, 2023
+# data queried Aug, 2023
 sd2020_db <- readRDS("data/data_from_dbsite_2020.RDS") %>% 
   filter(category == "School District") %>% 
   rename(ncesID = nces_district_id) %>% 
   # for sd collected ID that has only 6 digits, adding a leading 0
   mutate(ncesID = ifelse(str_length(ncesID) == 6, paste0("0", ncesID), ncesID)) 
 
+sd2020_db %>% filter(state == "CT")
 ```
 
 ## Dictionary 1: names matching with NCES
@@ -159,6 +160,8 @@ dictionary1234 %>% filter(state == "ME")
 
 #### NCES list
 
+NCES data set has 13,713 school districts across 50 states and 5 US territories, accounts for 48,420,226 students. This analysis only concerns 13,707 school districts in 50 states, accounts for a total of 48,026,570 students.
+
 NOTE: This list contains all school districts that have 1 or more students. Problem: Some ACFRs entities that are categorized as school districts have 0 student.
 
 ```{r}
@@ -174,6 +177,9 @@ nces <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>%
 # for NCES ID that has only 6 digits, adding a leading 0
   mutate(ncesID = ifelse(str_length(ncesID) < 7, paste0("0", ncesID), ncesID)) %>% 
 mutate(students = as.numeric(students)) 
+
+nces %>% saveRDS("nces.RDS")
+
 ```
 
 ```{r}
@@ -203,7 +209,7 @@ acfrs_NOT_in_dictionary1234 <- sd2020_db %>% filter(!id %in% dictionary1234$id) 
 # now use above 2 lists to fill in the remaining acfrs entities manually. Copy acfrs_NOT_in_dictionary1234 into an excel --> search on NCES website to find nces ID & student. If entity not found on NCES, check ACFRs reports on portal to find number of students. 
 # Note: ncesID = 99999 indicates an existing ACFR entity without an NCES ID
 
-dictionary5 <- readxl::read_xls("dictionary_5.xls") %>% # this dictionary_5.xls file is manually created in excel
+dictionary5 <- readxl::read_xls("data/dictionary_5_manually_created.xls") %>% # this dictionary_5.xls file is manually created in excel
   # remove all non-standard reports (not acfrs reports)
   mutate(type = case_when(is.na(type) ~ "regular", 
                           TRUE ~ type)) %>% 
@@ -264,6 +270,26 @@ dictionary12345 %>% filter(str_detect(nces_original_name, "(?i)LADUE"))
 ```
 
 dictionary12345 how has 9493 entities that ncesID, id (internal acfrs id), students number.
+
+# Result
+
+```{r}
+sd2020_db %>% 
+  mutate(id = as.character(id)) %>% 
+  select(state, name, id, year, total_liabilities, bonds_outstanding, current_liabilities, leases, loans_outstanding, notes_outstanding, net_pension_liability, net_pension_assets, net_opeb_liability, net_opeb_assets, compensated_absences, charges_for_services, operating_grants, capital_grants, general_revenue, change_in_net_position, expenses, total_operating_revenues, non_operating_revenues, capital_contributions, revenues
+         ) %>% 
+  left_join(dictionary12345, by = c("id", "state")) %>% 
+  filter(!is.na(ncesID)) %>% 
+  
+  left_join(nces, by = "ncesID") %>% select(-c(nces_original_name.x, nces_original_name.y, students.y, state.y)) %>% 
+  rename(students = students.x,
+         state = state.x, 
+         name = name.x)
+
+```
+
+
+
 
 ```{r}
 # more than 2000 does not have id --> need to use name to get id

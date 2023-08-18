@@ -5,7 +5,7 @@
 NCES has a total of 13 thousand school districts. The current ACFRs database has more than 9 thousand. However, school districts in ACFRs database do not a common identifier with the NCES, making it hard to know how many and which ones are collected. 
 
 ## Solution: 
-1. acfrs_filenam_govname_ncesid.Rmd
+1. acfrs_filename_govname_ncesid.Rmd
 This file is in acfrs_datachecking project
 
 This is the first stop dealing with acfrs school district data. Using regular expression to match as much as possible the names in ACFRs and in NCES. 
@@ -20,6 +20,15 @@ Construct a dictionary that links entity name, acfrs id, nces id
 dictionary12345.RDS
 
 Dictionary12345 how has 9493 entities that ncesID, id (internal acfrs id),  students number.
+
+# Analysis
+
+top100sd.Rmd: analysis of the top 100 largest school districts by number of students. 
+This includes calculations for some school districts that do not have an ACFRs report.
+
+
+total_liabilities_all_school_districts: calculation of total liabilities of all school districts.
+
 
 # Fields of data
 

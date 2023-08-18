@@ -55,8 +55,6 @@ sd2021_summary_db <- sd2021_db %>%
     distinct()  
 #write.csv(sd2021_db, "sd2021_db.csv")
 
-
-
 ```
 
 ```{r}
@@ -97,9 +95,6 @@ ggplotly(foo2)
 
 ## Top 100 SD NCES
 
-```{r}
-
-```
 
 NCES data set has 13,713 school districts across 50 states and 5 US territories, accounts for 48,420,226 students. This analysis only concerns 13,707 school districts in 50 states, accounts for a total of 48,026,570 students.
 
@@ -168,9 +163,6 @@ nces %>% group_by(state) %>% mutate(tot_student_state = sum(students)) %>%
 
 Top sd in NCES & Acfrs
 
-```{r}
-  
-```
 
 "Actual Department of Education revenues are listed on p. 239 and were 13,491,950,437 in 2020 and 13,417,503,839 in 2019. Department expenses are on p. 279 and were \$27,903,294,638 in 2020."
 
@@ -420,13 +412,7 @@ read.csv("data/tabn215.30.csv") %>% select(1:2,4) %>%
          
 ```
 
-Top 50
 
-```{r}
-
-top56_sd_2021
-
-```
 
 ```{r}
 library(plotly)
