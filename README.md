@@ -16,19 +16,27 @@ This is the first stop dealing with acfrs school district data. Using regular ex
 
 Construct a dictionary that links entity name, acfrs id, nces id
 
--->  Out put
+-->  Output
 dictionary12345.RDS
 
 Dictionary12345 how has 9493 entities that ncesID, id (internal acfrs id),  students number.
 
 # Analysis
 
-top100sd.Rmd: analysis of the top 100 largest school districts by number of students. 
+`top100sd.Rmd`: list of analysis of the top 100 largest school districts by number of students. 
 This includes calculations for some school districts that do not have an ACFRs report.
 
 
-total_liabilities_all_school_districts: calculation of total liabilities of all school districts.
+`total_liabilities_all_school_districts`: calculation of total liabilities of all school districts.
 
+# Result:
+The following files are in the `output` folder:
+
+`top100_sd_2020_2021.csv`
+
+`school_districts_2020.csv`
+
+`school_districts_2021.csv`
 
 # Fields of data
 
