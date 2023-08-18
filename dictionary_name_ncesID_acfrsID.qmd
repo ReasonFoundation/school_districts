@@ -240,15 +240,11 @@ adding students, nces name in dictionary1234
 ```{r}
 dictionary12345 <- dictionary1234 %>% left_join(nces) %>% select(-c(county_name, city)) %>% rbind(dictionary5) %>% 
   rbind(ny_city) %>% 
-  rbind(delaware) %>% 
+  rbind(delaware) 
 
-  # amend some special cases
-  mutate(name = case_when(id == "68349" ~ "Regional Supervision District Board of Education",
-                           TRUE ~ name)) %>%
-
-  filter(ncesID == "0903630")
-
-
+  # amend some special cases -> check with Ron to delete 1 entry
+  # mutate(name = case_when(id == "68349" ~ "Regional Supervision District Board of Education",
+  #                          TRUE ~ name)) 
 
 
 dictionary12345 %>% mutate(tot_student = sum(as.double(students), na.rm = T))
