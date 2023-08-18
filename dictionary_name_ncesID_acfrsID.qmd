@@ -158,7 +158,7 @@ dictionary1234 %>% filter(state == "ME")
 
 ## Dictionary 5: manual checking against NCES list
 
-#### NCES list
+# NCES list
 
 NCES data set has 13,713 school districts across 50 states and 5 US territories, accounts for 48,420,226 students. This analysis only concerns 13,707 school districts in 50 states, accounts for a total of 48,026,570 students.
 
@@ -240,7 +240,15 @@ adding students, nces name in dictionary1234
 ```{r}
 dictionary12345 <- dictionary1234 %>% left_join(nces) %>% select(-c(county_name, city)) %>% rbind(dictionary5) %>% 
   rbind(ny_city) %>% 
-  rbind(delaware)
+  rbind(delaware) %>% 
+
+  # amend some special cases
+  mutate(name = case_when(id == "68349" ~ "Regional Supervision District Board of Education",
+                           TRUE ~ name)) %>%
+
+  filter(ncesID == "0903630")
+
+
 
 
 dictionary12345 %>% mutate(tot_student = sum(as.double(students), na.rm = T))
@@ -263,10 +271,7 @@ nces %>% filter(!ncesID %in% dictionary12345$ncesID) %>% arrange(desc(students))
 sd2021_db %>% #filter(state == "CT") %>% arrange(name) %>% 
   filter(str_detect(name, "(?i)Arapahoe County School District No. 1"))
 
-nces %>% filter(str_detect(nces_original_name, "(i?)Englewood School District No. 1 in the county of Arapahoe"))
 
-dictionary12345 %>% filter(str_detect(name, "(?i)Arapahoe County School District No. 1"))
-dictionary12345 %>% filter(str_detect(nces_original_name, "(?i)LADUE"))
 ```
 
 dictionary12345 how has 9493 entities that ncesID, id (internal acfrs id), students number.
