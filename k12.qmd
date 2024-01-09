@@ -4,8 +4,6 @@ editor: visual
 format: html
 ---
 
-## Running Code
-
 ```{r}
 
 library(dplyr)
@@ -18,151 +16,11 @@ library(plotly)
 options(scipen = 999)
 ```
 
-# Total Liability & Total Asset 2020 \~ 2021
-
-## 2020
-
-```{r}
-# SD from database Jan 27 2023, before name matching & Hgarb manually added
-sd2020_db <- readRDS("data/data_from_dbsite.RDS") %>% 
-  filter(category == "School District")
-
-sd2020_summary_db <- sd2020_db %>% 
-  select(total_liabilities, net_pension_liability, net_pension_assets) %>% 
-  mutate(tot_liability = sum(total_liabilities),
-    tot_netpension_liability = sum(net_pension_liability), 
-    tot_netpension_asset = sum(net_pension_assets)) %>% 
-    select(tot_liability, tot_netpension_liability, tot_netpension_asset) %>% 
-    distinct()
-
-#write.csv(sd2020_db, "sd2020_db.csv")
-
-```
-
-## 2021
-
-```{r}
-
-sd2021_db <- readRDS("data/data_from_dbsite_2021.RDS") %>% # queried Feb 16
-  filter(category == "School District")
-
-sd2021_summary_db <- sd2021_db %>% 
-  select(total_liabilities, net_pension_liability, net_pension_assets) %>% 
-  mutate(tot_liability = sum(total_liabilities),
-    tot_netpension_liability = sum(net_pension_liability), 
-    tot_netpension_asset = sum(net_pension_assets)) %>% 
-    select(tot_liability, tot_netpension_liability, tot_netpension_asset) %>% 
-    distinct()  
-#write.csv(sd2021_db, "sd2021_db.csv")
-
-```
-
-```{r}
-sum_sd_data <- sd2020_summary_namematched_Hgarb %>% 
-  rbind(sd2020_summary_db) %>% 
-  rbind(sd2021_summary_db) %>% 
-  mutate(year = c("2020_additional_collection", "2020_first_collection", "2021_first_collection"), 
-         number_sd = c(11536, 9619, 10418))
-
-# Number of School District Collected
-sum_sd_data %>% 
-  ggplot(aes(year, number_sd)) +
-  geom_col(fill = "darkgreen") +
-  labs(title = "Number of School District Collected") +
-  theme_minimal() -> foo1
-
-```
-
-```{r}
-sum_sd_data %>% 
-  
-  # remove total liability in 2020 additional because HGarb did not collect this fully
-  mutate(tot_liability = ifelse(year == "2020_additional_collection", 0, tot_liability)) %>% 
-  pivot_longer(cols = c(tot_netpension_asset, tot_netpension_liability, tot_liability),
-               names_to = "type", 
-               values_to = "value") %>% 
-#mutate(value_char = format(d$value, big.mark = ",", scientific = FALSE)) %>% 
-  
-  ggplot(aes(year, value, group = type, fill = type)) +
-  geom_col(position = "dodge") +        
-  labs(y = "") +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1)) +
-  #scale_y_continuous(breaks = c(0, 1500000000000, 5000000000)) +
-  theme_minimal() -> foo2
-
-ggplotly(foo2)
-```
-
 ## Top 100 SD NCES
-
 
 NCES data set has 13,713 school districts across 50 states and 5 US territories, accounts for 48,420,226 students. This analysis only concerns 13,707 school districts in 50 states, accounts for a total of 48,026,570 students.
 
-```{r}
-# View those lacking NCES ID within the set HGarb added - 817 lacks NCES ID
-sd2020_namematched_Hgarb %>% #select(`NCES ID`, `Net Pension Liability`, `Net Pension Asset`) %>%
-  filter(is.na(ncesID)) 
-
-# Question: what is the significance about these school districts that do not have NCES ID?
-  
-  # check top Net Pension Liability
-  # filter(!is.na(`Net Pension Liability`)) %>% 
-  # arrange(desc(`Net Pension Liability`)) # top is Douglas County School District #0001 in NE
-
-# find that in NCES - 
-# nces %>% 
-#   filter(state == "NE") %>% 
-#   filter(str_detect(name, "douglas")) # ncesID 3100165
-
-```
-
-What's left?
-
-```{r}
-# Missing sd
-nces %>% filter(ncesID %in% sd_2020_combined$ncesID) %>% arrange(desc(students)) #%>% write.csv("missingSD_all.csv")
-
-db2021 %>% filter(state == "DE")
-nces %>% filter(state == "DE") %>% write.csv("list_school_districts_delaware.csv")
-```
-
-```{r}
-# Breakdown of missing 2998 SD by number of students
-nces %>% filter(!ncesID %in% sd_2020_combined$ncesID) %>% arrange(desc(students)) %>%  
-mutate(student_num = case_when(students >= 40000 ~ "40,000 or more",
-                               students >= 20000 ~ "20,000 ~ 40,000",
-                       students >= 10000 ~ "10,000 ~ 20,000", # American Samoa is one of these
-                       students >= 5000 ~ "5,000 ~ 10,000",
-                       students < 5000 ~ "less than 5,000"
-                       )) %>% 
-       add_count(student_num) %>% distinct(student_num, n) 
-#%>% write.csv("missingSD_breakdown_bystudents.csv") 
-```
-
-```{r}
-# Breakdown of number of missing SD by state
-nces %>% filter(!ncesID %in% sd_2020_combined$ncesID) %>% 
-  add_count(state) %>% 
-  select(state, n) %>% arrange(desc(n)) %>% distinct() %>% filter(state == "DE")
-
-nces %>% filter(state == "DE")
-#%>% write.csv("missingSD_breadown_byState.csv")
-```
-
-```{r}
-# Breakdown of rate of missing students by state
-nces %>% group_by(state) %>% mutate(tot_student_state = sum(students)) %>% 
-  
-  filter(!ncesID %in% sd_2020_combined$ncesID) %>% 
-  mutate(missing_student_state = sum(students)) %>% 
-  select(state, tot_student_state, missing_student_state) %>% distinct() %>% 
-  mutate(missing_rate = round(missing_student_state/tot_student_state,2)) %>% 
-  arrange(desc(missing_rate)) 
-#%>% write.csv("missing_numberStudent_breadown_byState.csv")
-```
-
-Top sd in NCES & Acfrs
-
+Geoff:
 
 "Actual Department of Education revenues are listed on p. 239 and were 13,491,950,437 in 2020 and 13,417,503,839 in 2019. Department expenses are on p. 279 and were \$27,903,294,638 in 2020."
 
@@ -233,11 +91,6 @@ sd2020_db %>%
   filter(str_detect(name, "Northside"))
 ```
 
-# Geoff:
-
-Conroe Independent School District 2021: Done
-
-Northside TX 2021 in sd2021_db, adding this total Assets: 3222278252
 
 ## Analyze top 100 school districts 2020
 
@@ -411,8 +264,6 @@ read.csv("data/tabn215.30.csv") %>% select(1:2,4) %>%
   mutate(students = as.numeric(str_replace_all(students, ",", "")))
          
 ```
-
-
 
 ```{r}
 library(plotly)

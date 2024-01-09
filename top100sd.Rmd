@@ -29,27 +29,25 @@ nces <- readRDS("nces.RDS")
 top_sd_nces <- nces %>% 
   arrange(desc(students)) %>% slice(1:105) %>% arrange(nces_original_name) # must take more than 100 because could not find acfrs for 4 of the first 100 
 #datatable(top_sd_nces)
+
+top_sd_nces %>% write.csv("output/top_sd_nces.csv")
 ```
 
 # School districts from Acfrs database 2020, 2021
 
 ```{r echo = FALSE}
-db2020 <- readRDS("data/data_from_dbsite_2020.RDS") # Data queried Aug 17, 2023
+db2020 <- readRDS("data/data_from_dbsite_2020.RDS") 
 db2021 <- readRDS("data/data_from_dbsite_2021.RDS")
+db2022 <- readRDS("data/data_from_dbsite_2022.RDS")
 
-sd2020_db <- readRDS("data/data_from_dbsite_2020.RDS") %>% 
+sd_20_21_22 <- db2020 %>% 
+  rbind(db2021) %>% 
+  rbind(db2022) %>% 
   filter(category == "School District") %>% 
   mutate(id = as.character(id)) %>% 
   select(state, name,id, year, total_liabilities, net_pension_liability, net_opeb_liability, expenses, revenues)
-
-sd2021_db <- readRDS("data/data_from_dbsite_2021.RDS") %>% 
-  filter(category == "School District") %>% 
-  mutate(id = as.character(id)) %>% 
-  select(state, name,id, year, total_liabilities, net_pension_liability, net_opeb_liability, expenses, revenues)
-
 ```
 
-- There are `r nrow(db2020)` acfrs collected in 2020 and `r nrow(db2021)` in 2021. Of which, the numbers of school districts acfrs are `r nrow(sd2020_db)` and `r nrow(sd2021_db)` for 2020 and 2021, respectively.
 
 ## Top School Districts in ACFRs
 
@@ -59,18 +57,51 @@ Found 93 acfrs that are in the top 100 largest of NCES.
 # Dictionary created in this project, file "dictionary_name_ncesID_acfrsID.qmd"
 dictionary <- readRDS("dictionary.RDS")
 
-# get acfrsID into this top nces, using dictionary 
-top_sd_acfrs <- top_sd_nces %>% left_join(dictionary) %>% drop_na(id) # drop those do not have acfrs id, not found in Acfrs database. They're picked up by HGarb team outside database
+dict_top100 <- dictionary %>% filter(ncesID %in% top_sd_nces$ncesID)
 
-datatable(top_sd_acfrs)
+top100_schooldistricts_3years <- sd_20_21_22 %>% 
+  left_join(dictionary, by = c("state", "id")) %>% 
+  left_join(nces, by = c("state", "ncesID")) %>% 
+  arrange(desc(students)) %>% 
+  filter(ncesID %in% dict_top100$ncesID) 
+
+dictionary %>% filter(str_detect(name, "(?i)fairfax"))
+
+# take from the acfrs list: 
+
+sd_20_21_22 %>% 
+  mutate(filter(str_detect(name, "(?i)Fairfax County Public Schools"))
+
+top100_schooldistricts_3years%>% write.csv("output/top100_schooldistricts_3years.csv")
+  
+  
+  # TODO: why does this not get joined?
+  sd_20_21_22 %>% 
+    filter(id == "39643") %>% 
+    mutate(id = str_trim(id),
+           ncesID = str_trim(ncesID)) -> test1
+  
+  dict_top100 %>% filter(id == "39643") %>% 
+    mutate(id = str_trim(id),
+          ncesID = str_trim(ncesID)) -> test2
+  
+test1 %>% left_join(test2)
 ```
 
 SD in the top 100 NCES that are not collected in the current ACFRs database
 
 ```{r echo = FALSE}
-top_sd_nces %>% filter(!ncesID %in% top_sd_acfrs$ncesID) -> top_sd_acfrs_10
-#datatable(top_sd_acfrs_10)
+diff_nces_acfrs_list <- setdiff(dict_top100$ncesID, top100_schooldistricts_3years$ncesID)
 ```
+
+```{r}
+#list of sd in top 100 NCES but NOT yet in ACFRs
+sd_20_21_22 %>% 
+  filter(str_detect(name, "(?i)jacksonville"))
+name == "Fairfax County Public Schools" ~ "5101260",
+~ "1200480"
+```
+
 
 ## New York City
 

@@ -21,14 +21,13 @@ Goal: construct a dictionary that links entity name, acfrs id, nces id
 # ACFRs school districts that have ncesID
 
 ```{r}
-# data queried Aug, 2023
+# data queried Nov, 2023
 sd2020_db <- readRDS("data/data_from_dbsite_2020.RDS") %>% 
   filter(category == "School District") %>% 
   rename(ncesID = nces_district_id) %>% 
   # for sd collected ID that has only 6 digits, adding a leading 0
   mutate(ncesID = ifelse(str_length(ncesID) == 6, paste0("0", ncesID), ncesID)) 
 
-sd2020_db %>% filter(state == "CT")
 ```
 
 ## Dictionary 1: names matching with NCES
@@ -246,27 +245,7 @@ dictionary12345 <- dictionary1234 %>% left_join(nces) %>% select(-c(county_name,
   # mutate(name = case_when(id == "68349" ~ "Regional Supervision District Board of Education",
   #                          TRUE ~ name)) 
 
-
-dictionary12345 %>% mutate(tot_student = sum(as.double(students), na.rm = T))
-filter(str_detect(nces_original_name, "NEW YORK CITY"))
-  filter(state == "NY") %>% arrange(desc(students))
-
 saveRDS(dictionary12345, "dictionary12345.RDS")
-
-#sum of student in dictionary12345 and DC / total students nces
-(45692640 + 50971)/48026570
-
-nces %>% filter(state %in% state.abb) 
- mutate(tot_nces = sum(students)) %>% slice(1)
-
-# find out what nces left, not in dictionary
-nces %>% filter(!ncesID %in% dictionary12345$ncesID) %>% arrange(desc(students)) %>% select(-c(county_name, city)) %>% filter(state == "CT") #%>%  #write.csv("VA_school districts_reported_in_gov.csv")
-
-#%>% mutate(tot_nces = sum(students)) %>% slice(1)
-
-sd2021_db %>% #filter(state == "CT") %>% arrange(name) %>% 
-  filter(str_detect(name, "(?i)Arapahoe County School District No. 1"))
-
 
 ```
 
@@ -279,6 +258,7 @@ sd2020_ncesID_students <- sd2020_db %>%
   mutate(id = as.character(id)) %>% 
   select(state, name, id, year, total_liabilities, bonds_outstanding, current_liabilities, leases, loans_outstanding, notes_outstanding, net_pension_liability, net_pension_assets, net_opeb_liability, net_opeb_assets, compensated_absences, charges_for_services, operating_grants, capital_grants, general_revenue, change_in_net_position, expenses, total_operating_revenues, non_operating_revenues, capital_contributions, revenues
          ) %>% 
+  
   left_join(dictionary12345, by = c("id", "state")) %>% 
   filter(!is.na(ncesID)) %>% 
   
@@ -288,8 +268,9 @@ sd2020_ncesID_students <- sd2020_db %>%
          name = name.x)
 
 write.csv(sd2020_ncesID_students, "output/school_districts_2020.csv")
-```
 
+sd2020_ncesID_students %>% drop_na(students)
+```
 
 ```{r}
 sd2021_db <- readRDS("data/data_from_dbsite_2021.RDS") %>% 
@@ -297,8 +278,6 @@ sd2021_db <- readRDS("data/data_from_dbsite_2021.RDS") %>%
   rename(ncesID = nces_district_id) %>% 
   # for sd collected ID that has only 6 digits, adding a leading 0
   mutate(ncesID = ifelse(str_length(ncesID) == 6, paste0("0", ncesID), ncesID)) %>% 
-
-
   select(state, name, id, year, total_liabilities, bonds_outstanding, current_liabilities, leases, loans_outstanding, notes_outstanding, net_pension_liability, net_pension_assets, net_opeb_liability, net_opeb_assets, compensated_absences, charges_for_services, operating_grants, capital_grants, general_revenue, change_in_net_position, expenses, total_operating_revenues, non_operating_revenues, capital_contributions, revenues
          ) %>% 
   mutate(id = as.character(id)) 
@@ -316,12 +295,27 @@ sd2021_ncesID_students <- sd2021_db %>%
 write.csv(sd2021_ncesID_students, "output/school_districts_2021.csv")
 ```
 
-
 ```{r}
-# more than 2000 does not have id --> need to use name to get id
-# what are names w/o id:
-without_id <- dictionary %>% filter(is.na(id))
+sd2022_db <- readRDS("data/data_from_dbsite_2022.RDS") %>% 
+  filter(category == "School District") %>% 
+  rename(ncesID = nces_district_id) %>% 
+  # for sd collected ID that has only 6 digits, adding a leading 0
+  mutate(ncesID = ifelse(str_length(ncesID) == 6, paste0("0", ncesID), ncesID)) %>% 
+  select(state, name, id, year, total_liabilities, bonds_outstanding, current_liabilities, leases, loans_outstanding, notes_outstanding, net_pension_liability, net_pension_assets, net_opeb_liability, net_opeb_assets, compensated_absences, charges_for_services, operating_grants, capital_grants, general_revenue, change_in_net_position, expenses, total_operating_revenues, non_operating_revenues, capital_contributions, revenues
+         ) %>% 
+  mutate(id = as.character(id)) 
 
+
+sd2022_ncesID_students <- sd2022_db %>% 
+  left_join(dictionary12345, by = c("id", "state")) %>% 
+  filter(!is.na(ncesID)) %>% 
+  
+  left_join(nces, by = "ncesID") %>% select(-c(nces_original_name.x, nces_original_name.y, students.y, state.y, name.y)) %>% 
+  rename(students = students.x,
+         state = state.x, 
+         name = name.x)
+
+write.csv(sd2022_ncesID_students, "output/school_districts_2022.csv")
 
 ```
 
