@@ -237,7 +237,8 @@ id = 77777 not on portal as of June 11, just uploaded the acfrs file to be proce
 adding students, nces name in dictionary1234
 
 ```{r}
-dictionary12345 <- dictionary1234 %>% left_join(nces) %>% select(-c(county_name, city)) %>% rbind(dictionary5) %>% 
+dictionary12345 <- dictionary1234 %>% left_join(nces) %>% select(-c(county_name, city)) %>% 
+  rbind(dictionary5) %>% 
   rbind(ny_city) %>% 
   rbind(delaware) 
 
@@ -247,29 +248,16 @@ dictionary12345 <- dictionary1234 %>% left_join(nces) %>% select(-c(county_name,
 
 saveRDS(dictionary12345, "dictionary12345.RDS")
 
+write.csv(dictionary12345, "dictionary12345.csv")
+dictionary12345 %>% filter(id == "58299")
+
 ```
 
 dictionary12345 how has 9493 entities that ncesID, id (internal acfrs id), students number.
 
 # Result
 
-```{r}
-sd2020_ncesID_students <- sd2020_db %>% 
-  mutate(id = as.character(id)) %>% 
-  select(state, name, id, year, total_liabilities, bonds_outstanding, current_liabilities, leases, loans_outstanding, notes_outstanding, net_pension_liability, net_pension_assets, net_opeb_liability, net_opeb_assets, compensated_absences, charges_for_services, operating_grants, capital_grants, general_revenue, change_in_net_position, expenses, total_operating_revenues, non_operating_revenues, capital_contributions, revenues
-         ) %>% 
-  
-  left_join(dictionary12345, by = c("id", "state")) %>% 
-  filter(!is.na(ncesID)) %>% 
-  
-  left_join(nces, by = "ncesID") %>% select(-c(nces_original_name.x, nces_original_name.y, students.y, state.y, name.y)) %>% 
-  rename(students = students.x,
-         state = state.x, 
-         name = name.x)
-
-write.csv(sd2020_ncesID_students, "output/school_districts_2020.csv")
-
-sd2020_ncesID_students %>% drop_na(students)
+```         
 ```
 
 ```{r}

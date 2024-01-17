@@ -26,11 +26,11 @@ options(scipen = 999)
 
 ```{r echo = FALSE}
 nces <- readRDS("nces.RDS")
-top_sd_nces <- nces %>% 
-  arrange(desc(students)) %>% slice(1:105) %>% arrange(nces_original_name) # must take more than 100 because could not find acfrs for 4 of the first 100 
-#datatable(top_sd_nces)
 
-top_sd_nces %>% write.csv("output/top_sd_nces.csv")
+top_sd_nces <- nces %>% 
+  arrange(desc(students)) %>% 
+  filter(!nces_original_name %in% c("PUERTO RICO DEPARTMENT OF EDUCATION", "District of Columbia Public Schools")) %>% select(-c(county_name, city)) %>% 
+  slice(1:100) 
 ```
 
 # School districts from Acfrs database 2020, 2021
@@ -43,69 +43,72 @@ db2022 <- readRDS("data/data_from_dbsite_2022.RDS")
 sd_20_21_22 <- db2020 %>% 
   rbind(db2021) %>% 
   rbind(db2022) %>% 
-  filter(category == "School District") %>% 
+  #filter(category == "School District") %>% 
   mutate(id = as.character(id)) %>% 
   select(state, name,id, year, total_liabilities, net_pension_liability, net_opeb_liability, expenses, revenues)
+
 ```
 
 
 ## Top School Districts in ACFRs
 
-Found 93 acfrs that are in the top 100 largest of NCES.
 
 ```{r echo = FALSE}
 # Dictionary created in this project, file "dictionary_name_ncesID_acfrsID.qmd"
-dictionary <- readRDS("dictionary.RDS")
+dictionary <- readRDS("dictionary.RDS") %>% 
+  add_row(
+    ncesID = "4703180", name = "Davidson County Board of Education", 
+    id = "1267426", state = "TN"
+  )
 
-dict_top100 <- dictionary %>% filter(ncesID %in% top_sd_nces$ncesID)
 
-top100_schooldistricts_3years <- sd_20_21_22 %>% 
-  left_join(dictionary, by = c("state", "id")) %>% 
-  left_join(nces, by = c("state", "ncesID")) %>% 
-  arrange(desc(students)) %>% 
-  filter(ncesID %in% dict_top100$ncesID) 
+dict_top100 <- dictionary %>% filter(ncesID %in% top_sd_nces$ncesID) %>% 
+  mutate(id = case_when(ncesID == "5101260" ~ "1250807", # Fairfax County Public Schools
+                   ncesID == "5102250" ~ "1250804", #Loudoun County Public Schools	
+                   ncesID == "5103130"~	"1250808",# Prince William County Public Schools		VA
+                   ncesID == "0803360" ~ "1237862", #City and County of Denver School District No. 1
+                   ncesID == "0102370" ~ "1017229",#Mobile County Board of School Commissioners	
+                   ncesID == "5103840" ~ "1265776", #School Board of the City of Virginia Beach	
+                   ncesID == "5100840" ~ "1267422", #VA	Chesterfield County Public Schools	1267422
+                   ncesID == "5101890" ~ "1267423", #VA	Henrico County Public Schools	1267423
+                   ncesID == "2502790" ~ "1267424", #MA	Boston Public Schools	
+                   ncesID == "3174820" ~ "35480", #NE Omaha City School District 1 = 	Douglas County School District No. 0001	35480
+         TRUE ~ as.character(id))) 
 
-dictionary %>% filter(str_detect(name, "(?i)fairfax"))
+# remain 5 cases of NYC not yet in dictionary: 3600103" "3600077" "3600098" "3600087" "3600151"
+setdiff(top_sd_nces$ncesID, dict_top100$ncesID)
+# these will be treated separately below
+top_sd_nces %>% filter(ncesID %in% c("3600103", "3600077", "3600098", "3600087", "3600151"))
 
-# take from the acfrs list: 
+df <- data_frame(state.abb, state.name)
 
-sd_20_21_22 %>% 
-  mutate(filter(str_detect(name, "(?i)Fairfax County Public Schools"))
+# find all acfrs with id in dict100
+top100_sd_3years <- sd_20_21_22 %>% 
+  filter(id %in% dict_top100$id) %>% select(-name) %>% 
+  left_join(dict_top100, by = c("id", "state")) %>% 
+  rbind(nyc_top5_20_21_22) %>% select(-id) %>% 
+  rename(state.abb = state) %>% 
+  left_join(df) %>% 
+  select(state.abb, state.name, ncesID, year, name, total_liabilities, net_pension_liability, net_opeb_liability, expenses, revenues) %>% drop_na(ncesID) %>% 
+  left_join(nces, by = "ncesID") %>% select(-state)
+ 
+library(jsonlite)
+exportJSON <- toJSON(top100_sd_3years)
+write(exportJSON, "output/top100_sd_3years.json")
 
-top100_schooldistricts_3years%>% write.csv("output/top100_schooldistricts_3years.csv")
-  
-  
-  # TODO: why does this not get joined?
-  sd_20_21_22 %>% 
-    filter(id == "39643") %>% 
-    mutate(id = str_trim(id),
-           ncesID = str_trim(ncesID)) -> test1
-  
-  dict_top100 %>% filter(id == "39643") %>% 
-    mutate(id = str_trim(id),
-          ncesID = str_trim(ncesID)) -> test2
-  
-test1 %>% left_join(test2)
+#list2 <- fromJSON("top100_sd_3years.json")
+
 ```
 
-SD in the top 100 NCES that are not collected in the current ACFRs database
+# Exceptions
 
-```{r echo = FALSE}
-diff_nces_acfrs_list <- setdiff(dict_top100$ncesID, top100_schooldistricts_3years$ncesID)
-```
-
-```{r}
-#list of sd in top 100 NCES but NOT yet in ACFRs
-sd_20_21_22 %>% 
-  filter(str_detect(name, "(?i)jacksonville"))
-name == "Fairfax County Public Schools" ~ "5101260",
-~ "1200480"
-```
-
+The following parts deal with exceptions of school districts. Except for New York, results for other entities were entered manually to the database. 
 
 ## New York City
 
 NYC DOE reports total numbers of 32 school districts. https://infohub.nyced.org/docs/default-source/default-document-library/2021-annual-financial-statements.pdf Page 26, 33
+
+FY FY2FY0FY2FY2FY: https://infohub.nyced.org/docs/default-source/default-document-library/2022-annual-financial-statements.pdf
 
 Method: Apportion Acfrs data for School Districts
 - Calculate the students share of each school district. 
@@ -123,25 +126,47 @@ nyc_2020 <- nces %>% filter(str_detect(nces_original_name, "(?i)NEW YORK CITY GE
          doe_net_pension = 0, #(Geoff checked, no net pension)
          doe_expenses = 30782114000,# page 26
          doe_total_asset = 66355469000, #page 33
-         doe_revenues = 28104219000)   #page 26
+         
+         doe_charges_services = 103098000,
+        doe_operating_grant = 13505234000,
+        doe_general_rev =  14444455000 + 51432000) # page 26, report FY 2021
   
 nyc_2021 <- nces %>% filter(str_detect(nces_original_name, "(?i)NEW YORK CITY GEOGRAPHIC DISTRICT")) %>% 
 #year 2021 - Department of Education NYC
   mutate(year = 2021,
          doe_total_liabilities = 48619741000, #page 33
          doe_net_opeb = 38982221000,#page 33
-         doe_net_pension = -1137314, # page 33 (Geoff: adding - due to over funding, other than this, prob only state Wisconsin) 
-         doe_expenses = 29278093000,# page 26
-         doe_total_asset = 66152289000, #page 33
-         doe_revenues = 28976372000) #page 26
+         doe_net_pension = -1137314000, # page 33 (Geoff: adding - due to over funding, other than this, prob only state Wisconsin) 
+         doe_expenses = 29278093000,# page 24
+         doe_total_asset = 66152289000, #page 22
+         
+         doe_charges_services = 41776000,
+        doe_operating_grant = 13458922000,
+        doe_general_rev = 15412901000 + 62773000) # page 26
 
-nyc_20_21 <- rbind(nyc_2020, nyc_2021)
-saveRDS(nyc_20_21, "nyc_20_21.RDS")  
+
+nyc_2022 <- nces %>% filter(str_detect(nces_original_name, "(?i)NEW YORK CITY GEOGRAPHIC DISTRICT")) %>% 
+#year 2021 - Department of Education NYC
+  mutate(year = 2022,
+         doe_total_liabilities = 56398529000, #page 33
+         doe_net_opeb = 29427659000,#page 33
+         doe_net_pension = 14166295000, # page 
+         doe_expenses = 33529494000,# page 24
+         doe_total_asset = 66678975000, #page 22
+# from report 2022
+doe_charges_services = 66519000,
+doe_operating_grant = 17238018000,
+doe_general_rev = 16144530000 + 80427000) # page 24
+
+
+nyc_20_21_22 <- rbind(nyc_2020, nyc_2021, nyc_2022) 
+ 
+saveRDS(nyc_20_21_22, "nyc_20_21_22.RDS")  
 
 ```
 
 ```{r}
-  nyc_20_21 %>% 
+  nyc_each_schooldistrict <- nyc_20_21_22 %>% 
     # students share
   mutate(
   id = NA, 
@@ -152,13 +177,25 @@ saveRDS(nyc_20_21, "nyc_20_21.RDS")
   net_opeb_liability = doe_net_opeb*share_student,
   net_pension_liability = doe_net_pension*share_student,
   expenses = doe_expenses*share_student,
-  revenues = doe_revenues*share_student) %>% 
-  # 
-  select(ncesID, nces_original_name, year, county_name, city, state, id, students, total_liabilities, net_opeb_liability, net_pension_liability, expenses, revenues) %>% 
-  
+  charges_services = doe_charges_services*share_student ,
+operating_grant = doe_operating_grant*share_student ,
+ general_rev = doe_general_rev*share_student) 
+
 # only get 5 of those who are in top100 largest
-filter(ncesID %in% top_sd_acfrs_10$ncesID) -> nyc_20_21_5sd
+nyc_top5_20_21_22 <- nyc_each_schooldistrict %>% select(-c(8:15, share_student)) %>% 
+  mutate(revenues = charges_services + operating_grant + general_rev) %>% 
+  select(state, nces_original_name, id, year, total_liabilities, net_opeb_liability, net_pension_liability, expenses,revenues, ncesID) %>% 
+  rename(name = nces_original_name) %>% 
+filter(ncesID %in% top_sd_nces$ncesID)  
+
 ```
+
+
+```{r}
+
+nyc_top5_20_21_22
+```
+
 
 
 ## Boston
@@ -236,9 +273,7 @@ mutate(
   year = 2021,
   total_liabilities = 62869374,#page 224
   net_opeb_liability = 0,## How about page 179, Schedule of changes in Net OPEB?? -> have both 2020, 2021
-  net_pension_liability = 0, #Geoff: should use the net pension liability on p. 169. That seems to focus on teachers.
-  #OR: should be this number??? 
-  #net_pension_liability = 75809615, - page 174
+  net_pension_liability = 4167372, #Geoff: should use the net pension liability on p. 169. That seems to focus on teachers. File Chesterfield ACFRS 2022
   
   expenses = 709920047, # #Geoff: For revenues and expenses, use the values on p. 225; those on p. 227 are just a subcomponent.  
   revenues = 704737890) %>% 
@@ -253,14 +288,16 @@ mutate(
   total_assets = 121514512, # page 224, Schedule C-1, Discretely presented Component Unit- School board
   year = 2020,
   total_liabilities = 63252560, # page 224,Schedule C-1, Discretely presented Component Unit- School board
-  net_opeb_liability = 0,
+  net_opeb_liability = 0, # page
   
-  net_pension_liability = 1223857, #page 169, school board component unit, column 2020, Chesterfield ACFRS 2021 OR should be page 174: Program total pension liability ending 2020: 76,292,808 & 2021: 74,809,615
+  net_pension_liability = 20311386, #page 169, school board component unit, column 2020, file Chesterfield ACFRS 2021 
   
   expenses = 659875816, # page 225, column School operating, Schedule C-2, Discretely presented Component Unit- School board - Statement of Revenues, Expenditure and changes in Fund Balance
   revenues = 658178834) %>% # page 225,
   # 
   select(ncesID, nces_original_name, county_name, city, state, id, students, year, total_liabilities, net_opeb_liability, net_pension_liability, expenses, revenues)
+
+#
 
 ```
 
@@ -330,7 +367,7 @@ mutate(
   net_opeb_liability = 76925442,
   net_pension_liability = 520851160,
   expenses = 614221032, 
-  revenues = 268922094) %>% # page 26, line total general revenues
+  revenues = 157,496 + 389,076,269) %>% # page 26
   # 
   select(ncesID, nces_original_name, county_name, city, state, id, students, year, total_liabilities, net_opeb_liability, net_pension_liability, expenses, revenues)
 
@@ -345,7 +382,7 @@ mutate(
   net_opeb_liability = 81756137,
   net_pension_liability = 462836320,
   expenses = 574231130, 
-  revenues = 211589891) %>% #page 26, line total general revenues
+  revenues = 5,030,669 + 336,336,784) %>% #page 26, line total general revenues
   # 
   select(ncesID, nces_original_name, county_name, city, state, id, students, year, total_liabilities, net_opeb_liability, net_pension_liability, expenses, revenues)
 
@@ -461,7 +498,6 @@ mutate(
 ```
 ## VA Loudoun 2021
 ```{r}
-
 loudoun_2021 <- nces %>% 
   filter(nces_original_name == "LOUDOUN CO PBLC SCHS" & state == "VA") %>%
 mutate(

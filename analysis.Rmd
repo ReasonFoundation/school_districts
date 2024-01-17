@@ -1,0 +1,59 @@
+---
+title: "Analysis"
+output: html_document
+date: "2024-01-11"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+library(tidyr)
+library(janitor)
+library(plotly)
+library(forcats)
+library(DT)
+options(scipen = 999)
+```
+
+```{r}
+db2020 <- readRDS("data/data_from_dbsite_2020.RDS") 
+db2021 <- readRDS("data/data_from_dbsite_2021.RDS") 
+db2022 <- readRDS("data/data_from_dbsite_2022.RDS") 
+
+full_acfrs_20_21_22 <- rbind(db2020, db2021, db2022) %>% 
+  filter(category %in% c("General Purpose", "School District")) %>% 
+  select(-c(6:11, 35, 36))
+
+full_acfrs_20_21_22 %>% write.csv("full_acfrs_20_21_22.csv")
+```
+# List of instances where an entity's liability accounts went from a positive number to zero year-over-year
+
+```{r}
+full_acfrs_20_21_22 %>% 
+  filter(year == 2020 & net_pension_liability > 0) %>% 
+   filter(year == 2021 & net_pension_liability == 0)
+  
+
+full_acfrs_20_21_22 %>% 
+  filter(year == 2021 & net_pension_liability > 0) %>% 
+   filter(year == 2022 & net_pension_liability == 0)
+
+full_acfrs_20_21_22 %>% 
+  filter(year == 2022 & net_pension_liability > 0) 
+
+  #####
+full_acfrs_20_21_22 %>% 
+  filter(year == 2020 & total_liabilities > 0) %>% 
+   filter(year == 2021 & total_liabilities == 0)
+  
+
+full_acfrs_20_21_22 %>% 
+  filter(year == 2021 & total_liabilities > 0) %>% 
+   filter(year == 2022 & total_liabilities == 0)
+```
+
+
+
