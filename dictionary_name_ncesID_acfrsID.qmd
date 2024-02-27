@@ -166,7 +166,7 @@ NOTE: This list contains all school districts that have 1 or more students. Prob
 ```{r}
 nces <- rio::import(here::here("data", "ncesdata_DBBFFFC.xlsx"), skip = 14) %>% 
   clean_names() %>% 
-  select(nces_district_id, district_name, county_name, city, state, students) %>% 
+  select(nces_district_id, district_name, county_name, city, state,locale, students) %>% 
   rename(nces_original_name = district_name,
     ncesID = nces_district_id) %>% 
     drop_na(nces_original_name) %>% 
